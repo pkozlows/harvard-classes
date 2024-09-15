@@ -1,0 +1,8 @@
+{
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.synctex": 1,
+    "latex-workshop.view.pdf.viewer": "tab",  // Ensure you're using the internal viewer
+
+    
+ }
+ 
