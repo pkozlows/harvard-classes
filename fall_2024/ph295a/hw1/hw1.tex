@@ -2,6 +2,40 @@
 \usepackage{amsmath}
 \usepackage{physics}
 \usepackage{graphicx}
+\usepackage{enumitem}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
 
 \author{Patryk Kozlowski}
 \title{Homework 1}
@@ -19,11 +53,11 @@ By definition, the number of particles is an integral over the density of states
 \end{equation}
 Expanding in polar coordinates, we have
 \begin{equation}
-    N = \int_{0}^{k_F} \int_{0}^{2\pi } \frac{d\theta}{(2\pi)^2} k \, dk = \frac{1}{2\pi}\int_{0}^{k_F} k \, dk = \frac{k_F^2}{4\pi}
+    N = \int_{0}^{k_F} \int_{0}^{2\pi } \frac{d\theta}{(2\pi)^2} k \, dk = \frac{1}{2\pi}\int_{0}^{k_F} k \, dk = \frac{k_F^2}{2\pi}
 \end{equation}
 The particle density is defined as the number of particles per unit area. Since we have a unit area, then
 \begin{equation}
-    n = \frac{N}{A} = \frac{k_F^2}{4\pi}
+    n = \frac{N}{A} = \frac{k_F^2}{2\pi}
 \end{equation}
 \subsection{Part b}
 What is the relation between $k_F$ and $r_s$ in two dimensions?
@@ -34,7 +68,7 @@ The Wigner-Seitz radius is defined as the area per particle in real space. So in
 \end{equation}
 But then we also found that the particle density can be expressed in terms of the Fermi wave vector, so we have a relationship between the Wigner-Seitz radius and the Fermi wave vector
 \begin{equation}
-    n = \frac{k_F^2}{4\pi} = \frac{N}{\pi r_s^2} \implies k_F = \frac{2\sqrt{N}}{r_s}
+    n = \frac{k_F^2}{2\pi} = \frac{N}{\pi r_s^2} \implies k_F = \frac{\sqrt{2N}}{r_s}
 \end{equation}
 \subsection{Part c}
 Prove that in two dimensions the free electron density of levels \( g(E) \) is a constant independent of \( \epsilon \) for \( \epsilon > 0 \), and 0 for \( \epsilon < 0 \). What is the constant?
@@ -45,7 +79,7 @@ A free electron only has the energy contribution from its kinetic part
 \end{equation}
 Now the number of single particle states up to this momentum \( k \) is given as before
 \begin{equation}
-    N(k) = \int_{0}^{k} \frac{d^2k}{(2\pi)^2} = \frac{1}{(2\pi)^2} \int_{0}^{k} d^2k = \frac{k^2}{4\pi}
+    N(k) = \int_{0}^{k} \frac{d^2k}{(2\pi)^2} = \frac{1}{(2\pi)^2} \int_{0}^{k} d^2k = \frac{k^2}{2\pi}
 \end{equation}
 The density of levels is defined by the derivative of the number with respect to the momentum, but we eventually want this in terms of the energy so we perform another derivative
 \begin{equation}
@@ -53,7 +87,7 @@ The density of levels is defined by the derivative of the number with respect to
 \end{equation}
 First we evaluate the first derivative
 \begin{equation}
-    \dv{N}{k} = \frac{k}{2\pi}
+    \dv{N}{k} = \frac{k}{\pi}
 \end{equation}
 Then we find the derivative of the momentum with respect to the energy
 \begin{equation}
@@ -61,13 +95,13 @@ Then we find the derivative of the momentum with respect to the energy
 \end{equation}
 Putting it all together, we find
 \begin{equation}
-    g(\epsilon) = \frac{k}{2\pi} \times \frac{1}{2k} \times \frac{2m}{\hbar^2} = \frac{m}{2\pi \hbar^2}
+    g(\epsilon) = \frac{k}{\pi} \times \frac{1}{2k} \times \frac{2m}{\hbar^2} = \frac{m}{2\pi \hbar^2}
 \end{equation}
 We know that a free electron cannot have a negative energy, so we get the distribution
 \begin{equation}
     g(\epsilon) = \begin{cases}
-        \frac{m}{2\pi \hbar^2} \& \epsilon > 0 \\
-        0 \& \epsilon < 0
+        \frac{m}{\pi \hbar^2} & \epsilon > 0 \\
+        0 & \epsilon < 0
     \end{cases}
 \end{equation}
 \subsection{Part d}
@@ -77,8 +111,8 @@ Show that because \( g(\epsilon) \) is constant, every term in the Sommerfeld ex
 We know that
 \begin{equation}
     \begin{aligned}
-\int_{-\infty}^{\infty} \& H(\varepsilon) f(\varepsilon) d \varepsilon \\
-\& = \int_{-\infty}^\mu H(\varepsilon) d \varepsilon + \frac{\pi^2}{6}\left(k_B T\right)^2 H^{\prime}(\mu) + \frac{7 \pi^4}{360}\left(k_B T\right)^4 H^{\prime \prime \prime}(\mu) + O\left(\frac{k_B T}{\mu}\right)^6
+\int_{-\infty}^{\infty} & H(\varepsilon) f(\varepsilon) d \varepsilon \\
+& = \int_{-\infty}^\mu H(\varepsilon) d \varepsilon + \frac{\pi^2}{6}\left(k_B T\right)^2 H^{\prime}(\mu) + \frac{7 \pi^4}{360}\left(k_B T\right)^4 H^{\prime \prime \prime}(\mu) + O\left(\frac{k_B T}{\mu}\right)^6
 \end{aligned}
 \end{equation}
 and the particle density is given as
@@ -104,9 +138,9 @@ We are starting with the definition of the particle density
 \begin{equation}
     n = \int_{-\infty}^{\infty} d \varepsilon \, g(\varepsilon) f(\varepsilon)
 \end{equation}
-The piece of information from the previous part is that we can approximate the density of states as constant, so we have \( g(\varepsilon) = g_0 = \frac{m}{2\pi \hbar^2} \). We know the form of the Fermi function as \( f(\varepsilon) = \frac{1}{1 + e^{\frac{\varepsilon - \mu}{k_B T}}} \), and it is 0 for negative energy values and also 0 for values greater than the Fermi energy. So we can write the integral as
+The piece of information from the previous part is that we can approximate the density of states as constant, so we have \( g(\varepsilon) = g_0 = \frac{m}{\pi \hbar^2} \). We know the form of the Fermi function as \( f(\varepsilon) = \frac{1}{1 + e^{\frac{\varepsilon - \mu}{k_B T}}} \), and it is 0 for negative energy values and also 0 for values greater than the Fermi energy. So we can write the integral as
 \begin{equation}
-    n = \frac{m}{2\pi \hbar^2}\int_{0}^{\infty} d \varepsilon \, \frac{1}{1 + e^{\frac{\varepsilon - \mu}{k_B T}}}
+    n = \frac{m}{\pi \hbar^2}\int_{0}^{\infty} d \varepsilon \, \frac{1}{1 + e^{\frac{\varepsilon - \mu}{k_B T}}}
 \end{equation}
 To perform the integral
 
@@ -128,26 +162,349 @@ Factoring out the constant \( k_B T \), this becomes
 k_B T \int_{-\mu/(k_B T)}^{\infty} \frac{1}{1 + e^u} \, du
 \]
 
-The integral \( \int \frac{1}{1 + e^u} \, du \) is a standard result and evaluates to \( \ln(1 + e^u) \). Applying the limits of integration, we have
+The integral \( \int \frac{1}{1 + e^u} \, du \) is a standard result and evaluates to \( -\ln(1 + e^{-u}) \). Applying the limits of integration, we have
 
 \[
-k_B T \left[ \ln(1 + e^u) \right]_{-\mu/(k_B T)}^{\infty}
+k_B T \left[ -\ln(1 + e^{-u}) \right]_{-\mu/(k_B T)}^{\infty}
 \]
 
-At the upper limit \( u \to \infty \), \( \ln(1 + e^u) \to u \). At the lower limit \( u = -\frac{\mu}{k_B T} \), we get \( \ln(1 + e^{-\mu/(k_B T)}) \). Thus, 
+At the upper limit \( u \to \infty \), \( \ln(1 + e^{-u}) \to 0 \). At the lower limit \( u = -\frac{\mu}{k_B T} \), we get \( -\ln(1 + e^{\mu/(k_B T)}) \). Thus, 
 \begin{equation}
-    n = \frac{m}{2\pi \hbar^2} k_B T \left( \frac{\varepsilon - \mu}{k_B T} - \ln(1 + e^{-\mu/(k_B T)}) \right)
+    n = \frac{m}{\pi \hbar^2} k_B T \left( \ln(1 + e^{\mu/(k_B T)}) \right)
 \end{equation}
-We know that the particle number divided by the density of states is defined as the Fermi energy, so we have
+Now, at zero temperature the partial density reduces to the simple expression
 \begin{equation}
-    \varepsilon_F = k_B T \left( \frac{\varepsilon - \mu}{k_B T} - \ln(1 + e^{-\mu/(k_B T)}) \right) \implies \frac{\varepsilon_F}{k_B T} = \frac{\varepsilon - \mu}{k_B T} - \ln(1 + e^{-\mu / k_B T})
+    n = \int_{0}^{\epsilon _{F}} \frac{m}{\pi \hbar^2} d \varepsilon = \frac{m \epsilon _{F}}{\pi \hbar^2}
 \end{equation}
+Setting the finite and zero temperature expressions equal to each other, canceling out the constants, we get
+\begin{equation}
+    \epsilon_F = k_B T \ln(1 + e^{\mu / k_B T})
+\end{equation}
+The next step is to factor out \( e^{\mu / k_B T} \) from inside the logarithm, which gives
+\begin{equation}
+    \epsilon_F = k_B T \ln (e^{\mu / k_B T}(1 + e^{-\mu / k_B T})) = \mu + k_B T \ln (1 + e^{-\mu / k_B T})
+\end{equation}
+
+
 \subsection{Part f}
 \subsubsection{Solution}
 We can make an approximation for the natural logarithm as $\ln(1+e^{-\mu/k_BT}) \approx e^{-\mu/k_BT}$, which is valid for $\mu \gg k_BT$. This defines the correction.
 The Sommerfeld expansion relies on being able to approximate the behavior of integrals near the Fermi energy by expanding functions like the density of states in a power series around \(\varepsilon_F\). In 3D, where the density of states varies smoothly with energy, this works well.
 
 In 2D, where the density of states is constant, this smooth variation doesn't exist, and therefore the Sommerfeld expansion breaks down. The low-temperature corrections in 2D are non-analytic, meaning the temperature dependence cannot be expressed as a simple power series in \(T\), unlike in higher dimensions.
+\section{Problem 3}
+Ashcroft and Mermin, Chapter 2, Problem 2 (parts a--d)
+
+\subsection{Part a}
+Deduce from the thermodynamic identities 
+\[
+c_v = \left( \frac{\partial u}{\partial T} \right)_n = T \left( \frac{\partial s}{\partial T} \right)_n
+\]
+from Eqs. (2.56) and (2.57), and from the third law of thermodynamics that the entropy density, $s = S/V$, is given by:
+\[
+s = -k_B \int d\vb{k} \frac{1}{4\pi^3} \left[ f \ln f + (1 - f) \ln (1 - f) \right]
+\]
+where $f(E(k))$ is the Fermi function (Eq. 2.56).
+
+\subsubsection{Solution}
+We know that the internal energy is defined as
+\begin{equation}
+    u = \int d \vb{k} \frac{1}{4\pi^3} \epsilon(k) f(k)
+\end{equation}
+We start by taking the derivative of it with respect to temperature. We know that the energy of the state is not dependent on the temperature, so we are left with
+\begin{equation}
+    \left( \frac{\partial u}{\partial T} \right)_n = \int d \vb{k} \frac{1}{4\pi^3} \epsilon(k) \left( \frac{\partial f}{\partial T} \right)_n = T \left( \frac{\partial s}{\partial T} \right)_n
+\end{equation}
+This implies that
+\begin{equation}
+    s = s_0 + \int_{0}^{T} dT \frac{1}{T} \left( \int d\vb{k} \frac{\epsilon (k)}{4\pi ^{3}} \left( \frac{\partial f}{\partial T} \right)_n  \right)
+\end{equation}
+The third law of thermodynamics states that the entropy of a perfect crystal at absolute zero is zero, so we have \( s_0 = 0 \). Now we want to show:
+\begin{equation}
+    -\frac{\epsilon (k)}{k_B T} \left( \frac{\partial f}{\partial T} \right)_n = \ln (e^{-\epsilon (k) / k_B T}) \left( \frac{\partial f}{\partial T} \right)_n
+\end{equation}
+We can say that
+\begin{equation}
+    \ln (e^{-\epsilon (k) / k_B T}) = \ln \left(\frac{f}{1-f}\right)
+\end{equation}
+Next, we can use the property of logarithms to write
+\begin{equation}
+    \ln \left(\frac{f}{1-f}\right) = \ln f - \ln (1-f) \implies -\frac{\epsilon (k)}{k_B T} \left( \frac{\partial f}{\partial T} \right)_n = \ln f \left( \frac{\partial f}{\partial T} \right)_n - \ln (1-f) \left( \frac{\partial f}{\partial T} \right)_n
+\end{equation}
+And now we apply the chain rule in reverse for the derivative with respect to temperature:
+\begin{equation}
+    -\frac{\epsilon (k)}{k_B T} \left( \frac{\partial f}{\partial T} \right)_n = \left( \frac{\partial}{\partial T} \right)_n \left( f \ln f + (1 - f) \ln (1 - f) \right)
+\end{equation}
+And then substitute back into the equation for the entropy density:
+\begin{equation}
+    s = -k_B \int d\vb{k} \frac{1}{4\pi^3} \int_{0}^{T} dT \left( \frac{\partial}{\partial T} \right)_n \left( f \ln f + (1 - f) \ln (1 - f) \right)
+\end{equation}
+So that the inside integral with respect to temperature vanishes and we are left with
+\begin{equation}
+    s = -k_B \int d\vb{k} \frac{1}{4\pi^3} \left[ f \ln f + (1 - f) \ln (1 - f) \right]
+\end{equation}
+
+\subsection{Part b}
+Since the pressure $P$ satisfies $P = -(\partial F / \partial V)_T$, deduce from the entropy equation that
+\[
+P = k_B T \int dk \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right) \right)
+\]
+Show that this implies $P$ is a homogeneous function of $\mu$ and $T$ of degree 5/2.
+
+\subsubsection{Solution}
+We know that the Helmholtz free energy with the allowed exchange of partial number is
+\begin{equation}
+    F = U - TS - \mu N
+\end{equation}
+so the free energy density is
+\begin{equation}
+    f = u - Ts - \mu n
+\end{equation}
+and then the future is just the negation
+\begin{equation}
+    P = -\left( u - Ts - \mu n \right) = -f
+\end{equation}
+In the previous part we found the entropy density, and we also know that the expression for the internal energy is
+\begin{equation}
+    u = \int d \vb{k} \frac{1}{4\pi^3} \epsilon(k) f(k)
+\end{equation}
+while the number density is
+\begin{equation}
+    n = \int d \vb{k} \frac{1}{4\pi^3} f(k)
+\end{equation}
+So we can write the free energy density as
+\begin{equation}
+    f = \int d \vb{k} \frac{1}{4\pi^3} \epsilon(k) f(k) - T \int d \vb{k} \frac{1}{4\pi^3} \left[ f \ln f + (1 - f) \ln (1 - f) \right] - \mu \int d \vb{k} \frac{1}{4\pi^3} f(k)
+\end{equation}
+Multiplying and dividing by \( k_B T \), we can write the pressure as
+\begin{equation}
+    P = -k_B T \int d \vb{k} \frac{1}{4\pi^3} \left[ \frac{\epsilon -\mu}{k_B T} f - f \ln f - (1 - f) \ln (1 - f) \right]
+\end{equation}
+If we define the variable $x = \frac{\epsilon - \mu}{k_B T}$, we can write the pressure as
+\begin{equation}
+    P = -k_B T \int d \vb{k} \frac{1}{4\pi^3} \left[ \frac{x}{e^x + 1} - \frac{1}{e^x + 1} \ln \left( \frac{1}{e^x + 1} \right) - \frac{e^x}{e^x + 1} \ln \left( \frac{e^x}{e^x + 1} \right) \right]
+\end{equation}
+Eventually we get to 
+\begin{equation}
+    P = k_B T \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right) \right)
+\end{equation}
+and now to show that it is a homogeneous function of degree 5/2; this or means that for this $P(\mu, T)$, we have that
+\begin{equation}
+    P(\lambda \mu, \lambda T) = \lambda^{5/2} P(\mu, T)
+\end{equation}
+So we can write
+\begin{equation}
+    P(\lambda \mu, \lambda T) = k_B \lambda T \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\lambda \mu - \epsilon(k)}{k_B \lambda T} \right) \right)
+\end{equation}
+Multiplying the exponent by $\frac{\lambda}{\lambda}$, we get
+\begin{equation}
+    P(\lambda \mu, \lambda T) = k_B \lambda T \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \frac{\epsilon(k)}{\lambda}}{k_B T} \right) \right)
+\end{equation}
+Remember that the energy of the state is defined as $\epsilon(k) = \frac{\hbar^2 k^2}{2m}$, so we can write
+\begin{equation}
+    P(\lambda \mu, \lambda T) = k_B \lambda T \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \frac{\hbar^2 \left(\frac{k}{\sqrt{\lambda}}\right)^2}{2m}}{k_B T} \right) \right)
+\end{equation}
+Changing our integration variable to $k' = \frac{k}{\sqrt{\lambda}}$ yields $d^3k = \lambda^{3/2} d^3k'$, so we can write
+\begin{equation}
+    P(\lambda \mu, \lambda T) = k_B \lambda^{5/2} T \int d \vb{k'} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \frac{\hbar^2 k'^2}{2m}}{k_B T} \right) \right)
+\end{equation}
+and we see that this is equal to $\lambda^{5/2} P(\mu, T)$, so we have shown that the pressure is a homogeneous function of degree 5/2.
+\subsection{Part c}
+Use the thermodynamic relations to show that:
+\[
+\left( \frac{\partial P}{\partial \mu} \right)_T = n, \quad \left( \frac{\partial P}{\partial T} \right)_\mu = s.
+\]
+
+\subsubsection{Solution}
+First let us consider $\left( \frac{\partial P}{\partial \mu} \right)_T$. We know that
+\begin{equation}
+    P = k_B T \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right) \right)
+\end{equation}
+Taking the derivative with respect to the chemical potential at a fixed temperature means we need to determine
+\begin{equation}
+    \frac{\partial}{\partial \mu} \ln \left( 1 + \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right) \right) = \frac{1}{1 + \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right)} \times \frac{\partial}{\partial \mu} \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right)
+\end{equation}
+\begin{equation}
+    = \frac{1}{1 + \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right)} \times \frac{1}{k_B T} \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right)
+\end{equation}
+Multiplying by $\frac{e^{\frac{\epsilon(k) - \mu}{k_B T}}}{e^{\frac{\epsilon(k) - \mu}{k_B T}}}$, we get
+\begin{equation}
+    = \frac{1}{k_B T} \frac{1}{e^{-\frac{\mu - \epsilon(k)}{k_B T}} + 1}
+\end{equation}
+Plugging this in we have
+\begin{equation}
+    \left( \frac{\partial P}{\partial \mu} \right)_T = \int d \vb{k} \frac{1}{4\pi^3} \frac{1}{e^{-\frac{\mu - \epsilon(k)}{k_B T}} + 1} = n
+\end{equation}
+since we identify the Fermi function $f(k)=\frac{1}{e^{-\frac{\mu - \epsilon(k)}{k_B T}} + 1}$.
+Next, we consider 
+\begin{equation}
+    \left( \frac{\partial P}{\partial T} \right)_\mu = \left( \frac{\partial}{\partial T} \right)_\mu \left( k_B T \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right) \right) \right)
+\end{equation}
+The first thing we can do is to define $I = \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right) \right)$, so we have
+\begin{equation}
+    \left( \frac{\partial P}{\partial T} \right)_\mu = k_B \times I + k_B T \times \left( \frac{\partial I}{\partial T} \right)_\mu
+\end{equation}
+To evaluate the derivative of $I$ with respect to temperature we need to consider
+\begin{equation}
+    \frac{\partial}{\partial T} \ln \left( 1 + e^{ \left( \frac{\mu - \epsilon(k)}{k_B T} \right)} \right) = \frac{1}{1 + e^{ \left( \frac{\mu - \epsilon(k)}{k_B T} \right)}} \times \frac{\partial}{\partial T} e^{ \left( \frac{\mu - \epsilon(k)}{k_B T} \right)} = \frac{1}{1 + e^{ \left( \frac{\mu - \epsilon(k)}{k_B T} \right)}} \times -\frac{\mu - \epsilon(k)}{k_B T^2} e^{ \left( \frac{\mu - \epsilon(k)}{k_B T} \right)}
+\end{equation}
+From this, we once again identify the fraction as the Fermi function, so we have
+\begin{equation}
+    = - f(k) \times \frac{\mu - \epsilon(k)}{k_B T^2} \implies \left( \frac{\partial I}{\partial T} \right)_\mu = \int d \vb{k} \frac{1}{4\pi^3} f(k) \times \frac{\epsilon(k) - \mu}{k_B T^2}
+\end{equation}
+Substituting in for the original expression, we have
+\begin{equation}
+    \left( \frac{\partial P}{\partial T} \right)_\mu = k_B \times I + \int d \vb{k} \frac{1}{4\pi^3} f(k) \times \frac{\epsilon(k) - \mu}{T} = I k_B + \frac{u-\mu n}{T}
+\end{equation}
+But then we know that $P=k_B T \times I \implies k_B \times I = \frac{P}{T}$, so we have
+\begin{equation}
+    \left( \frac{\partial P}{\partial T} \right)_\mu = \frac{P+u-\mu n}{T}
+\end{equation}
+Now, we know the thermodynamic identity $U = TS - PV + \mu N$ and dividing by $V$ we get $u = Ts - P + \mu n$, so we can write
+\begin{equation}
+    \left( \frac{\partial P}{\partial T} \right)_\mu = \frac{P+Ts-P+\mu n-\mu n}{T} = \frac{Ts}{T} = s
+\end{equation}
+\subsection{Part d}
+By differentiating the homogeneous function for $P$, show that the ground-state relation holds at any temperature, i.e.
+\[
+P = \frac{2}{3} u.
+\]
+
+\subsubsection{Solution}
+Euler's theorem for homogeneous functions states that if $F(x_1, x_2, \ldots, x_n)$ is a homogeneous function of degree $k$, then
+\begin{equation}
+    \sum_{i=1}^{n} x_i \left( \frac{\partial F}{\partial x_i} \right) = kF
+\end{equation}
+We have the pressure function which is a homogeneous of degree 5/2 with respect to $\mu$ and $T$, so we can write
+\begin{equation}
+    \mu \left( \frac{\partial P}{\partial \mu} \right)_T + T \left( \frac{\partial P}{\partial T} \right)_\mu = \frac{5}{2} P
+\end{equation}
+We know from the previous part that $\left( \frac{\partial P}{\partial \mu} \right)_T = n$ and $\left( \frac{\partial P}{\partial T} \right)_\mu = s$, so we can write
+\begin{equation}
+    \mu n + Ts = \frac{5}{2} P
+\end{equation}
+We use the identity $u = Ts - P + \mu n \implies \mu n + Ts = u + P$, so we can write
+\begin{equation}
+    u + P = \frac{5}{2} P \implies u = \frac{3}{2} P \implies P = \frac{2}{3} u
+\end{equation}
+% Your solution goes here
+
+
+\section{Problem 3}
+Ashcroft and Mermin, Chapter 2, Problem 3
+\subsection{Part a}
+In the classical regime which we are working in, the particle density is given by:
+\begin{equation}
+    n = \frac{e^\frac{\mu }{k_BT}}{\lambda^3}
+\end{equation}
+where we have defined the thermal wavelength given by:
+\begin{equation}
+    \lambda = \sqrt{\frac{2\pi \hbar^2}{mk_BT}}
+\end{equation}
+Now we know that the particle density is related to the Wigner-Seitz radius by:
+\begin{equation}
+    n = \frac{1}{\frac{4}{3}\pi r_s^3}
+\end{equation}
+and plugging this relation in gives
+\begin{equation}
+    \frac{1}{\frac{4}{3}\pi r_s^3} = \frac{e^\frac{\mu }{k_BT}}{\lambda^3}
+\end{equation}
+Isolation of $r_s$ gives
+\begin{equation}
+    r_s = \left(\frac{3\lambda^3}{4\pi e^\frac{\mu }{k_BT}}\right)^{1/3} = e^{-\mu / 3 k_B T} 3^{1 / 3} \pi^{1 / 6} \hbar\left(2 m k_B T\right)^{-1 / 2}
+\end{equation}
+where we have derived the final result by plugging everything in and doing some algebraic simplifications.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
+
+# Define symbols
+r_s, mu, k_B, T, m, hbar = sp.symbols('r_s mu k_B T m hbar', real=True, positive=True)
+pi = sp.pi
+e = sp.exp(1)
+
+# Define lambda (thermal de Broglie wavelength)
+lambda_expr = sp.sqrt((2 * pi * hbar**2) / (m * k_B * T))
+
+# Equation 1: Particle density in terms of r_s
+lhs = 1 / ((4 / 3) * pi * r_s**3)
+# Equation 2: Particle density in terms of mu and lambda
+rhs = sp.exp(mu / (k_B * T)) / lambda_expr**3
+
+# Set up the equation
+equation = sp.Eq(lhs, rhs)
+
+# Solve for r_s
+solution = sp.solve(equation, r_s)
+
+solution[0]
+
+\end{lstlisting}
+\subsection{Part b}
+We see that the right-hand side of 2.106 is proportional to the thermal wavelength defined earlier. This means that in the classical regime the radius must be much larger than the thermal wavelength; if the radius was on the order of the thermal wavelength, we would need to start considering quantum effects.
+\subsection{Part c}
+The Bohr radius is defined as
+\begin{equation}
+    a_0 = \frac{\hbar^2}{m e^2}
+\end{equation}
+So if we want to consider the fraction of the Wigner-Seitz radius to the Bohr radius, we can write
+\begin{equation}
+    \frac{r_s}{a_0} \gg \frac{\left(\frac{\hbar^2}{2mk_BT}\right)^{1/2}}{\frac{\hbar^2}{m e^2}} = \left(\frac{me^4}{2k_BT\hbar^2}\right)^{1/2}
+\end{equation}
+The final form such as that we insert the numerical values to compute the fraction $\frac{me^4}{2k_B\hbar^2}$. GPT gives
+\begin{equation}
+    \frac{me^4}{2k_B\hbar^2} \approx 157,888K \approx 10^5K
+\end{equation}
+So we get the desired result of
+\begin{equation}
+    \frac{r_s}{a_0} \gg \left(\frac{10^5 K}{T} \right)^{1/2}
+\end{equation}
+\subsection{Part d}
+Recall that we can relate the Fermi energy $E_F = \frac{\hbar^2}{2m}(3\pi^2n)^{2/3}$ to the Fermi temperature:
+\begin{equation}
+    k_B T_F = \frac{\hbar^2}{2m}(3\pi^2n)^{2/3}
+\end{equation}
+Now the goal will to be to express the normalization constant in the FD velocity distribution $C=\frac{m^3}{4\pi^3\hbar^3}$ in terms of the Fermi temperature as $\left(\frac{3\sqrt{\pi}}{4}\right)n\left(\frac{m}{2\pi k_B T_F}\right)^{3/2}$. Let us solve for $\hbar^3$ in the relation:
+\begin{equation}
+    \hbar^3 = \left(\frac{2 m k_b T_F }{\left(3\pi^2 n\right)^{2/3}}\right)^{3/2} = \left(2 m k_B T_F\right)^{3/2} \left(\frac{1}{3\pi^2 n}\right)
+\end{equation}
+Now we can substitute this into the normalization constant:
+\begin{equation}
+    C = \frac{m^3}{4\pi^3} \left(\frac{3\pi^2 n}{\left(2 m k_B T_F\right)^{3/2}}\right)
+\end{equation}
+My Sympy code performs the simplifications of the algebra to get to the final result.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
+
+# Define symbols
+m, n, k_B, T_F, pi = sp.symbols('m n k_B T_F pi', real=True, positive=True)
+hbar = sp.symbols('hbar', real=True, positive=True)
+
+# Initial normalization constant
+C_initial = m**3 / (4 * pi**3 * hbar**3)
+
+# Expression for hbar^3
+hbar_cubed = (2 * m * k_B * T_F)**(sp.Rational(3, 2)) * (1 / (3 * pi**2 * n))
+
+# Substitute hbar^3 into C_initial
+C_substituted = C_initial.subs(hbar**3, hbar_cubed)
+
+# Simplify numerator and denominator separately
+numerator = m**3 * (3 * pi**2 * n)
+denominator = 4 * pi**3 * (2 * m * k_B * T_F)**(sp.Rational(3, 2))
+
+# Form the expression for C
+C_expr = numerator / denominator
+
+# Simplify the expression
+C_final = sp.simplify(C_expr)
+
+# Display the final expression
+print('The final expression for C is:')
+sp.pprint(C_final)
+
+\end{lstlisting}
 \section{Problem 4}
 Ashcroft \& Mermin, Chapter 4, Problem 5
 \subsection{Part a}
