@@ -245,14 +245,14 @@ So that the inside integral with respect to temperature vanishes and we are left
 \end{equation}
 
 \subsection{Part b}
-Since the pressure $P$ satisfies $P = -(\partial F / \partial V)_T$, deduce from the entropy equation that
+Since the pressure \( P \) satisfies \( P = -\left( \partial F / \partial V \right)_T \), deduce from the entropy equation that
 \[
 P = k_B T \int dk \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right) \right)
 \]
-Show that this implies $P$ is a homogeneous function of $\mu$ and $T$ of degree 5/2.
+Show that this implies \( P \) is a homogeneous function of \( \mu \) and \( T \) of degree \( 5/2 \).
 
 \subsubsection{Solution}
-We know that the Helmholtz free energy with the allowed exchange of partial number is
+We know that the Helmholtz free energy with the allowed exchange of particle number is
 \begin{equation}
     F = U - TS - \mu N
 \end{equation}
@@ -260,7 +260,7 @@ so the free energy density is
 \begin{equation}
     f = u - Ts - \mu n
 \end{equation}
-and then the future is just the negation
+and then the pressure is just the negation
 \begin{equation}
     P = -\left( u - Ts - \mu n \right) = -f
 \end{equation}
@@ -274,21 +274,30 @@ while the number density is
 \end{equation}
 So we can write the free energy density as
 \begin{equation}
-    f = \int d \vb{k} \frac{1}{4\pi^3} \epsilon(k) f(k) - T \int d \vb{k} \frac{1}{4\pi^3} \left[ f \ln f + (1 - f) \ln (1 - f) \right] - \mu \int d \vb{k} \frac{1}{4\pi^3} f(k)
+    f = \int d \vb{k} \frac{1}{4\pi^3} \epsilon(k) f(k) + T \int d \vb{k} \frac{1}{4\pi^3} \left[ f \ln f + (1 - f) \ln (1 - f) \right] - \mu \int d \vb{k} \frac{1}{4\pi^3} f(k)
 \end{equation}
 Multiplying and dividing by \( k_B T \), we can write the pressure as
 \begin{equation}
-    P = -k_B T \int d \vb{k} \frac{1}{4\pi^3} \left[ \frac{\epsilon -\mu}{k_B T} f - f \ln f - (1 - f) \ln (1 - f) \right]
+    P = -k_B T \int d \vb{k} \frac{1}{4\pi^3} \left[ \frac{\epsilon - \mu}{k_B T} f + f \ln f + (1 - f) \ln (1 - f) \right]
 \end{equation}
-If we define the variable $x = \frac{\epsilon - \mu}{k_B T}$, we can write the pressure as
+If we define the variable \( x = \frac{\epsilon - \mu}{k_B T} \), we can write the pressure as
 \begin{equation}
-    P = -k_B T \int d \vb{k} \frac{1}{4\pi^3} \left[ \frac{x}{e^x + 1} - \frac{1}{e^x + 1} \ln \left( \frac{1}{e^x + 1} \right) - \frac{e^x}{e^x + 1} \ln \left( \frac{e^x}{e^x + 1} \right) \right]
+    P = -k_B T \int d \vb{k} \frac{1}{4\pi^3} \left[ \frac{x}{e^x + 1} + \frac{1}{e^x + 1} \ln \left( \frac{1}{e^x + 1} \right) + \frac{e^x}{e^x + 1} \ln \left( \frac{e^x}{e^x + 1} \right) \right]
 \end{equation}
-Eventually we get to 
+We start simplifying the inside of the brackets, \( \left[*\right] \):
 \begin{equation}
-    P = k_B T \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \epsilon(k)}{k_B T} \right) \right)
+    \left[*\right] = \frac{x}{e^x + 1} - \frac{1}{e^x + 1} \ln \left( e^x + 1 \right) + \frac{e^x}{e^x + 1} \times x - \frac{e^x}{e^x + 1} \ln \left( e^x + 1 \right) = x - \ln \left( e^x + 1 \right)
 \end{equation}
-and now to show that it is a homogeneous function of degree 5/2; this or means that for this $P(\mu, T)$, we have that
+Now, we can factor out \( e^{-x} \) from the logarithm, so we have
+\begin{equation}
+    \left[*\right] = x - x - \ln \left( 1 + e^{-x} \right) = -\ln \left( 1 + e^{-x} \right)
+\end{equation}
+and now plugging this back into the pressure expression, we have
+\begin{equation}
+    P = k_B T \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + e^{-\frac{\epsilon - \mu}{k_B T}} \right)
+\end{equation}
+
+Now to show that it is a homogeneous function of degree \( 5/2 \); this means that for this \( P(\mu, T) \), we have that
 \begin{equation}
     P(\lambda \mu, \lambda T) = \lambda^{5/2} P(\mu, T)
 \end{equation}
@@ -296,19 +305,19 @@ So we can write
 \begin{equation}
     P(\lambda \mu, \lambda T) = k_B \lambda T \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\lambda \mu - \epsilon(k)}{k_B \lambda T} \right) \right)
 \end{equation}
-Multiplying the exponent by $\frac{\lambda}{\lambda}$, we get
+Multiplying the exponent by \( \frac{\lambda}{\lambda} \), we get
 \begin{equation}
     P(\lambda \mu, \lambda T) = k_B \lambda T \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \frac{\epsilon(k)}{\lambda}}{k_B T} \right) \right)
 \end{equation}
-Remember that the energy of the state is defined as $\epsilon(k) = \frac{\hbar^2 k^2}{2m}$, so we can write
+Remember that the energy of the state is defined as \( \epsilon(k) = \frac{\hbar^2 k^2}{2m} \), so we can write
 \begin{equation}
     P(\lambda \mu, \lambda T) = k_B \lambda T \int d \vb{k} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \frac{\hbar^2 \left(\frac{k}{\sqrt{\lambda}}\right)^2}{2m}}{k_B T} \right) \right)
 \end{equation}
-Changing our integration variable to $k' = \frac{k}{\sqrt{\lambda}}$ yields $d^3k = \lambda^{3/2} d^3k'$, so we can write
+Changing our integration variable to \( k' = \frac{k}{\sqrt{\lambda}} \) yields \( d^3k = \lambda^{3/2} d^3k' \), so we can write
 \begin{equation}
     P(\lambda \mu, \lambda T) = k_B \lambda^{5/2} T \int d \vb{k'} \frac{1}{4\pi^3} \ln \left( 1 + \exp \left( \frac{\mu - \frac{\hbar^2 k'^2}{2m}}{k_B T} \right) \right)
 \end{equation}
-and we see that this is equal to $\lambda^{5/2} P(\mu, T)$, so we have shown that the pressure is a homogeneous function of degree 5/2.
+and we see that this is equal to \( \lambda^{5/2} P(\mu, T) \), so we have shown that the pressure is a homogeneous function of degree \( 5/2 \).
 \subsection{Part c}
 Use the thermodynamic relations to show that:
 \[
