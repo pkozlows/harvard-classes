@@ -1,0 +1,146 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Header
+\fancyhf{}
+\fancyhead[L]{Harvard University}
+\fancyhead[C]{Physics 295a}
+\fancyhead[R]{Problem Set 2}
+\fancyfoot[C]{\thepage}
+
+\title{Problem Set 2}
+\author{}
+\date{Due: Sep 27, 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1: Ashcroft \& Mermin, Chapter 5, Problem 2}
+\subsection{(a)}
+ Using the primitive vectors given in Eq (4.9) and the construction (5.3) (or by any other method) show that the reciprocal of the simple hexagonal Bravais lattice is also simple hexagonal, with lattice constants $2 \pi / c$ and $4 \pi / \sqrt{3} a$, rotated through $30^{\circ}$ about the $c$-axis with respect to the direct lattice.
+
+Relevant formula from the chapter:
+(4.9)
+$$
+\begin{aligned}
+& \mathbf{b}_1=2 \pi \frac{\mathbf{a}_2 \times \mathbf{a}_3}{\mathbf{a}_1 \cdot\left(\mathbf{a}_2 \times \mathbf{a}_3\right)} \\
+& \mathbf{b}_2=2 \pi \frac{\mathbf{a}_3 \times \mathbf{a}_1}{\mathbf{a}_1 \cdot\left(\mathbf{a}_2 \times \mathbf{a}_3\right)} \\
+& \mathbf{b}_3=2 \pi \frac{\mathbf{a}_1 \times \mathbf{a}_2}{\mathbf{a}_1 \cdot\left(\mathbf{a}_2 \times \mathbf{a}_3\right)}
+\end{aligned}
+$$
+and (5.3)
+$$
+\mathbf{a}_1=a \hat{x}, \quad \mathbf{a}_2=\frac{a}{2} \hat{x}+\frac{\sqrt{3} a}{2} \hat{y}, \quad \mathbf{a}_3=c \hat{z} .
+$$
+\subsubsection{Solution}
+Our first task will be to evaluate the volume of the unit cell in real space, as given by $\mathbf{a}_1 \cdot\left(\mathbf{a}_2 \times \mathbf{a}_3\right)$. First, we will evaluate the cross product of $\mathbf{a}_2$ and $\mathbf{a}_3$:
+\begin{equation}
+    \mathbf{a}_2 \times \mathbf{a}_3 = \left(\frac{a}{2} \hat{x}+\frac{\sqrt{3} a}{2} \hat{y}\right) \times c \hat{z} = -\left(\frac{a}{2}c\right) \hat{y} + \left(\frac{\sqrt{3} a}{2}c\right) \hat{x}
+\end{equation}
+Next, we will evaluate the dot product of $\mathbf{a}_1$ with this:
+\begin{equation}
+    \mathbf{a}_1 \cdot\left(\mathbf{a}_2 \times \mathbf{a}_3\right) = a \hat{x} \cdot \left(-\left(\frac{a}{2}c\right) \hat{y} + \left(\frac{\sqrt{3} a}{2}c\right) \hat{x}\right) = \frac{\sqrt{3} a^2 c}{2}
+\end{equation}
+Now that we have the volume, we want to compute the numerators for the reciprocal lattice vectors:
+\begin{align}
+    \mathbf{a}_2 \times \mathbf{a}_3 &= \left(\frac{a}{2} \hat{x}+\frac{\sqrt{3} a}{2} \hat{y}\right) \times c \hat{z} = -\left(\frac{a}{2}c\right) \hat{y} + \left(\frac{\sqrt{3} a}{2}c\right) \hat{x} \\
+    \mathbf{a}_3 \times \mathbf{a}_1 &= c \hat{z} \times a \hat{x} = c a \hat{y} \\
+    \mathbf{a}_1 \times \mathbf{a}_2 &= a \hat{x} \times \left(\frac{a}{2} \hat{x}+\frac{\sqrt{3} a}{2} \hat{y}\right) = \frac{\sqrt{3} a^2}{2} \hat{z}
+\end{align}
+Now we can compute the reciprocal lattice vectors by dividing these by the volume:
+\begin{align}
+    \mathbf{b}_1 &= 2 \pi \frac{\mathbf{a}_2 \times \mathbf{a}_3}{\mathbf{a}_1 \cdot\left(\mathbf{a}_2 \times \mathbf{a}_3\right)} = 2 \pi \frac{-\left(\frac{a}{2}c\right) \hat{y} + \left(\frac{\sqrt{3} a}{2}c\right) \hat{x}}{\frac{\sqrt{3} a^2 c}{2}} = \frac{2\pi}{a} \left(\hat{x} - \frac{1}{\sqrt{3}} \hat{y}\right) \\
+    \mathbf{b}_2 &= 2 \pi \frac{\mathbf{a}_3 \times \mathbf{a}_1}{\mathbf{a}_1 \cdot\left(\mathbf{a}_2 \times \mathbf{a}_3\right)} = 2 \pi \frac{c a \hat{y}}{\frac{\sqrt{3} a^2 c}{2}} = \frac{4\pi}{\sqrt{3} a} \hat{y} \\
+    \mathbf{b}_3 &= 2 \pi \frac{\mathbf{a}_1 \times \mathbf{a}_2}{\mathbf{a}_1 \cdot\left(\mathbf{a}_2 \times \mathbf{a}_3\right)} = 2 \pi \frac{\frac{\sqrt{3} a^2}{2} \hat{z}}{\frac{\sqrt{3} a^2 c}{2}} = \frac{2\pi}{c} \hat{z}
+\end{align}
+By taking the magnitude of the reciprocal lattice vectors, we can determine the new constants. For instance, the magnitude of \(\mathbf{b}_3\) is \(\frac{2\pi}{c}\), while the magnitudes of \(\mathbf{b}_1\) and \(\mathbf{b}_2\) are \(\frac{4\pi}{\sqrt{3}a}\). Now, we want to determine an angle of rotation. Since we know that the \(c\)-axis has the same definition in reciprocal space as defined now by \(\mathbf{b}_3\), we now want to consider the angle between \(\mathbf{a}_1\) and \(\mathbf{b}_1\), which is defined by the formula \(\cos(\theta) = \frac{\mathbf{a}_1 \cdot \mathbf{b}_1}{|\mathbf{a}_1||\mathbf{b}_1|}\). We can compute this as:
+\begin{equation}
+    \mathbf{a}_1 \cdot \mathbf{b}_1 = a \hat{x} \cdot \left(\frac{2\pi}{a} \left(\hat{x} - \frac{1}{\sqrt{3}} \hat{y}\right)\right) = 2\pi
+\end{equation}
+Now we already know the magnitudes, so we get:
+\begin{equation}
+    \cos(\theta) = \frac{2\pi}{\left(a \times \frac{4\pi}{\sqrt{3}a}\right)} = \frac{\sqrt{3}}{2} \implies \theta = 30^{\circ}
+\end{equation}
+So we show that the rotation between the direct and reciprocal lattices is \(30^{\circ}\).
+\subsection{(b)}
+ For what value of c/a does the ratio have the same value in both direct and reciprocal lattices? If $c / a$ is jdeal in the direct lattice, what is its value in the reciprocal lattice?
+\subsubsection{Solution}
+The ratio of interest is \(\frac{c}{a}\). In the direct latest, this is simply $\frac{c}{a}$. In the reciprocal lattice, we can compute this as:
+\begin{equation}
+    \frac{c}{a} = \frac{\frac{2\pi}{c}}{\frac{4\pi}{\sqrt{3}a}} = \frac{\sqrt{3}a}{2c}
+\end{equation}
+Now, we want to find the value of \(c/a\) that makes these two ratios equal. We can set the two equal to each other and solve for \(c/a\):
+\begin{equation}
+    \frac{c}{a} = \frac{\sqrt{3}a}{2c} \implies c^2 = \sqrt{3}a^2 \implies \frac{c}{a} = (\frac{\sqrt{3}}{2})^{1/2}
+\end{equation}
+We know that in the direct latest, the ideal ritual is \(\frac{c}{a} = \sqrt{\frac{8}{3}} \implies \frac{a}{c} = \sqrt{\frac{3}{8}}\). Now we plug this in to the formula for the $\frac{c}{a}$ ratio in the reciprocal lattice:
+\begin{equation}
+    \frac{c}{a} = \frac{\sqrt{3}a}{2c} = \frac{\sqrt{3}}{2} \sqrt{\frac{3}{8}} = \frac{3}{4\sqrt{2}}
+\end{equation}
+\subsection{(c)}
+ The Bravais lattice generated by three primitive vectors of equal length $a$, making equal angles $\theta$ with one another, is known as the trigonal Bravais lattice (see Chapter 7 ). Show that the reciprocal of a trigonal Bravais lattice is also trigonal, with an angle $\theta^*$ given by $-\cos \theta^*=$ $\cos \theta /[1+\cos \theta]$, and a primitive vector length $a^*$, given by $a^*=(2 \pi / a)\left(1+2 \cos \theta \cos \theta^*\right)^{-1 / 2}$.
+\subsubsection{Solution}
+
+
+\section*{Problem 2: Ashcroft \& Mermin, Chapter 8, Problem 1}
+\noindent \textbf{Problem Description:} \\
+Use Bloch's theorem to prove that the energy eigenstates of an electron in a crystal lattice can be written in the form \( \psi_{\mathbf{k}}(\mathbf{r}) = e^{i \mathbf{k} \cdot \mathbf{r}} u_{\mathbf{k}}(\mathbf{r}) \), where \( u_{\mathbf{k}}(\mathbf{r}) \) has the periodicity of the lattice.
+
+Relevant formula from Bloch's theorem:
+\begin{equation}
+\psi_{\mathbf{k}}(\mathbf{r}) = e^{i \mathbf{k} \cdot \mathbf{r}} u_{\mathbf{k}}(\mathbf{r})
+\end{equation}
+with \( u_{\mathbf{k}}(\mathbf{r} + \mathbf{R}) = u_{\mathbf{k}}(\mathbf{r}) \) for any lattice vector \( \mathbf{R} \).
+
+\vspace{2em}
+\noindent \textbf{Solution:} \\
+\vspace{10em}
+
+\section*{Problem 3: Ashcroft \& Mermin, Chapter 8, Problem 2}
+\noindent \textbf{Problem Description:} \\
+Demonstrate that the wavevector \( \mathbf{k} \) in Bloch's theorem is only defined up to a reciprocal lattice vector, i.e., \( \mathbf{k} \sim \mathbf{k} + \mathbf{G} \), where \( \mathbf{G} \) is any reciprocal lattice vector.
+
+Relevant equation:
+\begin{equation}
+\psi_{\mathbf{k}}(\mathbf{r}) = \psi_{\mathbf{k} + \mathbf{G}}(\mathbf{r})
+\end{equation}
+This shows the periodicity in reciprocal space.
+
+\vspace{2em}
+\noindent \textbf{Solution:} \\
+\vspace{10em}
+
+\section*{Problem 4: Ashcroft \& Mermin, Chapter 9, Problem 1}
+\noindent \textbf{Problem Description:} \\
+Explain the concept of nearly-free electrons and how the weak periodic potential leads to the formation of energy gaps at the Brillouin zone boundaries.
+
+Relevant equation:
+\begin{equation}
+V(\mathbf{r}) = \sum_{\mathbf{G}} V_{\mathbf{G}} e^{i \mathbf{G} \cdot \mathbf{r}}
+\end{equation}
+where \( V_{\mathbf{G}} \) represents the Fourier components of the potential.
+
+\vspace{2em}
+\noindent \textbf{Solution:} \\
+\vspace{10em}
+
+\section*{Problem 5: Ashcroft \& Mermin, Chapter 9, Problem 3}
+\noindent \textbf{Problem Description:} \\
+Using perturbation theory, show how energy gaps at the zone boundaries arise when a weak periodic potential is applied to a free electron system.
+
+Relevant equation:
+\begin{equation}
+\Delta E = 2 | V_{\mathbf{G}} |
+\end{equation}
+where \( V_{\mathbf{G}} \) is the Fourier component of the periodic potential that causes the energy gap.
+
+\vspace{2em}
+\noindent \textbf{Solution:} \\
+\vspace{10em}
+
+\end{document}
