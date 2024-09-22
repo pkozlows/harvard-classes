@@ -20,7 +20,7 @@
 
 \maketitle
 
-\section*{Problem 1: Ashcroft \& Mermin, Chapter 5, Problem 2}
+\section{Problem 1: Ashcroft \& Mermin, Chapter 5, Problem 2}
 \subsection{(a)}
  Using the primitive vectors given in Eq (4.9) and the construction (5.3) (or by any other method) show that the reciprocal of the simple hexagonal Bravais lattice is also simple hexagonal, with lattice constants $2 \pi / c$ and $4 \pi / \sqrt{3} a$, rotated through $30^{\circ}$ about the $c$-axis with respect to the direct lattice.
 
@@ -87,18 +87,141 @@ We know that in the direct latest, the ideal ritual is \(\frac{c}{a} = \sqrt{\fr
 \subsubsection{Solution}
 
 
-\section*{Problem 2: Ashcroft \& Mermin, Chapter 8, Problem 1}
+\section{Problem 2: Ashcroft \& Mermin, Chapter 8, Problem 1}
 \noindent \textbf{Problem Description:} \\
-Use Bloch's theorem to prove that the energy eigenstates of an electron in a crystal lattice can be written in the form \( \psi_{\mathbf{k}}(\mathbf{r}) = e^{i \mathbf{k} \cdot \mathbf{r}} u_{\mathbf{k}}(\mathbf{r}) \), where \( u_{\mathbf{k}}(\mathbf{r}) \) has the periodicity of the lattice.
+The band structure of the one-dimensional solid can be expressed quite simply in terms of the properties of an electron in the presence of a single-barrier potential $t(x)$. Consider therefore an electron incident from the left on the potential barrier $v(x)$ with energy ${ }^{33} \varepsilon=h^2 K^2 / 2 m$. Since $x(x)=0$ when $|x| \geqslant a / 2$. in these regions the wave function $\psi_1(x)$ will have the form
+$$
+\begin{aligned}
+\psi_1(x) & =e^{i K x}+r e^{-i K x}, \quad x \leqslant-\frac{a}{2} \\
+& =t e^{i K x}, \quad x \geqslant \frac{a}{2}
+\end{aligned}
+$$
 
-Relevant formula from Bloch's theorem:
+This is illustrated schematically in Figure 8.5a.
+The transmission and reflection coefficients $t$ and $r$ give the probability amplitude that the electron will tunnel through or be reflected from the barrier; they depend on the incident wave vector $K$ in a manner determined by the detailed features of the barrier potential $\boldsymbol{v}$. However, one can deduce many properties of the band structure of the periodic potential $U$ by appealing only to very general properties of $t$ and $r$. Because $v$ is even, $\psi_r(x)=\psi_r(-x)$ is also a solution to the Schrödinger equation with energy $\varepsilon$. From (8.65) it follows that $\psi_r(x)$ has the form
+$$
+\begin{aligned}
+\psi_r(x) & =t e^{-i K x}, \quad x \leqslant-\frac{a}{2} \\
+& =e^{-i K x}+r e^{i K x}, \quad x \geqslant \frac{a}{2}
+\end{aligned}
+$$
+
+Evidently this describes a particle incident on the barrier from the right, as depicted in Figure 8.5b.
+Since $\psi_l$ and $\psi_{\text {r }}$ are two independent solutions to the single-barrier Schrödinger equation with the same energy, any other solution with that energy will be a linear combination ${ }^{34}$ of these two: $\psi=A \psi_I+B \psi_r$. In particular, since the crystal Hamiltonian is identical to that for a single ion in the region $-a / 2 \leqslant x \leqslant a / 2$, any solution to the crystal Schrodinger equation with energy $\delta$ must be a linear combination of $\psi_l$ and $\psi_r$ in that region:
+$$
+\psi(x)=A \psi_l(x)+B \psi_r(x), \quad-\frac{a}{2} \leqslant x \leqslant \frac{a}{2}
+$$
+
+Now Bloch's theorem asserts that $\psi$ can be chosen to satisfy
+$$
+\psi(x+a)=e^{i k a} \psi(x)
+$$
+for suitable $k$. Differentiating (8.68) we also find that $\psi^{\prime}=d \psi / d x$ satisfies
+$$
+\psi^{\prime}(x+a)=e^{i k a} \psi^{\prime}(x)
+$$
+\subsection{}
+(a) By imposing the conditions (8.68) and (8.69) at $x=-a / 2$, and using (8.65) to (8.67), show that the energy of the Bloch electron is related to its wave vector $k$ by:
+$$
+\cos k a=\frac{t^2-r^2}{2 t} e^{i K a}+\frac{1}{2 t} e^{-i K a}, \quad \mathcal{E}=\frac{h^2 K^2}{2 m}
+$$
+
+Verify that this gives the right answer in the free electron case $(v \equiv 0)$.
+\subsubsection{Solution}
+We begin by imposing the boundary conditions, which gives:
+\begin{align}
+    \psi(\frac{a}{2}) = e^{ika}\psi(-\frac{a}{2}) \\
+    \psi'(\frac{a}{2}) = e^{ika}\psi'(-\frac{a}{2})
+\end{align}
+Now, we plug in for both $\psi_l$ and $\psi_r$:
+\begin{align}
+    \psi_l(-\frac{a}{2}) &= re^{iK\frac{a}{2}} + e^{-iK\frac{a}{2}} \\
+    \psi_r(-\frac{a}{2}) &= te^{iK\frac{a}{2}}
+\end{align}
+and then for the derivatives
+\begin{align}
+    \psi_l'(-\frac{a}{2}) &= iK\left(-re^{iK\frac{a}{2}} + e^{-iK\frac{a}{2}}\right) \\
+    \psi_r'(-\frac{a}{2}) &= -iKte^{iK\frac{a}{2}}.
+\end{align}
+At the other boundary we have:
+\begin{align}
+    \psi_l(\frac{a}{2}) &= t e^{iK\frac{a}{2}} \\
+    \psi_r(\frac{a}{2}) &= re^{iK\frac{a}{2}} + e^{-iK\frac{a}{2}}
+\end{align}
+and then for the derivatives
+\begin{align}
+    \psi_l'(\frac{a}{2}) &= iKte^{iK\frac{a}{2}} \\
+    \psi_r'(\frac{a}{2}) &= iK\left(re^{iK\frac{a}{2}} - e^{-iK\frac{a}{2}}\right).
+\end{align}
+Now, we plug in these results into the Bloch conditions:
 \begin{equation}
-\psi_{\mathbf{k}}(\mathbf{r}) = e^{i \mathbf{k} \cdot \mathbf{r}} u_{\mathbf{k}}(\mathbf{r})
+    A\psi_l(\frac{a}{2}) + B\psi_r(\frac{a}{2}) = e^{ika}\left(A\psi_l(-\frac{a}{2}) + B\psi_r(-\frac{a}{2})\right).
 \end{equation}
-with \( u_{\mathbf{k}}(\mathbf{r} + \mathbf{R}) = u_{\mathbf{k}}(\mathbf{r}) \) for any lattice vector \( \mathbf{R} \).
-
+Plugging and and redefining the reciprocal vector $K\equiv G$ to avoid confusion, we have:
+\begin{equation}
+    A\left(t e^{iG\frac{a}{2}}\right) + B\left(re^{iG\frac{a}{2}} + e^{-iG\frac{a}{2}}\right) = e^{ika}\left(A\left(re^{iG\frac{a}{2}} + e^{-iG\frac{a}{2}}\right) + B\left(te^{iG\frac{a}{2}}\right)\right)
+\end{equation}
+Grouping terms onto the left hand side and combining the exponentials, we have:
+\begin{equation}
+    A\left(t e^{iG\frac{a}{2}} - re^{ia\left(k+\frac{G}{2} \right)} - e^{ia\left(k-\frac{G}{2} \right)}\right) + B\left(re^{iG\frac{a}{2}} + e^{-iG\frac{a}{2}} - te^{ia\left(k+\frac{G}{2} \right)}\right) = 0
+\end{equation}
+For the derivative we have the condition:
+\begin{equation}
+    A\psi_l'(\frac{a}{2}) + B\psi_r'(\frac{a}{2}) = e^{ika}\left(A\psi_l'(-\frac{a}{2}) + B\psi_r'(-\frac{a}{2})\right).
+\end{equation}
+Plugging in and redefining the reciprocal vector $K\equiv G$ to avoid confusion, we have:
+\begin{equation}
+    A\left(iGte^{iG\frac{a}{2}}\right) + B\left(iG\left(re^{iG\frac{a}{2}} - e^{-iG\frac{a}{2}}\right)\right) = e^{ika}\left(A\left(iG\left(-re^{iG\frac{a}{2}} + e^{-iG\frac{a}{2}}\right)\right) + B\left(-iGte^{iG\frac{a}{2}}\right)\right)
+\end{equation}
+Grouping terms onto the left hand side and combining the exponentials and dividing by $iG$, we have:
+\begin{equation}
+    A\left(t e^{iG\frac{a}{2}} + re^{ia\left(k+\frac{G}{2} \right)} - e^{ia\left(k-\frac{G}{2} \right)}\right) + B\left(re^{iG\frac{a}{2}} - e^{-iG\frac{a}{2}} + te^{ia\left(k+\frac{G}{2} \right)}\right) = 0
+\end{equation}
+Next, we can define the matrix equation:
+\begin{equation}
+    \begin{pmatrix}
+        T_{11} & T_{12} \\
+        T_{21} & T_{22}
+    \end{pmatrix}
+    \begin{pmatrix}
+        A \\
+        B
+    \end{pmatrix} = 0
+\end{equation}
+where $T_{11} = t e^{iG\frac{a}{2}} - re^{ia\left(k+\frac{G}{2} \right)} - e^{ia\left(k-\frac{G}{2} \right)}$, $T_{12} = re^{iG\frac{a}{2}} + e^{-iG\frac{a}{2}} - te^{ia\left(k+\frac{G}{2} \right)}$, $T_{21} = t e^{iG\frac{a}{2}} + re^{ia\left(k+\frac{G}{2} \right)} - e^{ia\left(k-\frac{G}{2} \right)}$, and $T_{22} = re^{iG\frac{a}{2}} - e^{-iG\frac{a}{2}} + te^{ia\left(k+\frac{G}{2} \right)}$. The determinant of this matrix must be zero, so we have:
+\begin{equation}
+    T_{11}T_{22} - T_{12}T_{21} = 0
+\end{equation}
+Plugging in the expressions for $T_{11}$, $T_{12}$, $T_{21}$, and $T_{22}$, we have:
+\begin{align}
+    \left(t e^{iG\frac{a}{2}} - re^{ia\left(k+\frac{G}{2} \right)} - e^{ia\left(k-\frac{G}{2} \right)}\right) \left(re^{iG\frac{a}{2}} - e^{-iG\frac{a}{2}} + te^{ia\left(k+\frac{G}{2} \right)}\right)\\ - \left(re^{iG\frac{a}{2}} + e^{-iG\frac{a}{2}} - te^{ia\left(k+\frac{G}{2} \right)}\right) \left(t e^{iG\frac{a}{2}} + re^{ia\left(k+\frac{G}{2} \right)} - e^{ia\left(k-\frac{G}{2} \right)}\right) = 0
+\end{align}
+Sympy simplifies this to:
+\begin{equation}
+    2 \left(- r^{2} e^{2 i G a} + t^{2} e^{2 i G a} - t e^{i a \left(G - k\right)} - t e^{i a \left(G + k\right)} + 1\right) e^{i a \left(- G + k\right)} = 0
+\end{equation}
+Dividing both sides by the factor of $2e^{i a \left(- G + k\right)}$, we have:
+\begin{equation}
+    - r^{2} e^{2 i G a} + t^{2} e^{2 i G a} - t e^{i a \left(G - k\right)} - t e^{i a \left(G + k\right)} + 1 = 0
+\end{equation}
+Now, let us group the terms:
+\begin{equation}
+    \left(t^{2} - r^{2}\right) e^{2 i G a} - t \left(e^{i a \left(G - k\right)} + e^{i a \left(G + k\right)}\right) + 1 = 0
+\end{equation}
+Now, notice the identity of:
+\begin{equation}
+    e^{i a \left(G - k\right)} + e^{i a \left(G + k\right)} = 2e^{i a G} \cos(ka)
+\end{equation}
+Substitution with further manipulation gives the desired result:
+\begin{equation}
+    \cos(ka) = \frac{t^2 - r^2}{2t} e^{iGa} + \frac{1}{2t} e^{-iGa}
+\end{equation}
+Now, we can verify this in the free electron case by setting $v\equiv 0$. In this case, we have $t=1$ and $r=0$, so the equation becomes:
+\begin{equation}
+    \cos(ka) = \frac{1}{2} e^{iGa} + \frac{1}{2} e^{-iGa} = \cos(Ga)
+\end{equation}
 \vspace{2em}
-\noindent \textbf{Solution:} \\
+\noindent \textbf{Solution} \\
 \vspace{10em}
 
 \section*{Problem 3: Ashcroft \& Mermin, Chapter 8, Problem 2}
