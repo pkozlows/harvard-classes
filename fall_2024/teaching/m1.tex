@@ -1,0 +1,118 @@
+\documentclass{beamer}
+\usepackage{hyperref}
+
+
+\title{Microteaching: Understanding Quantum Absorption}
+\subtitle{Energy Levels in Hydrogen Atoms}
+\author{Patryk Kozlowski \\ \href{mailto:patryk\_kozlowski@g.harvard.edu}{patryk\_kozlowski@g.harvard.edu}}
+\date{September 2024}
+
+% Adding the name and email to the footer
+\setbeamertemplate{footline}{%
+  \hfill\small\insertshortauthor \hfill \href{mailto:patryk\_kozlowski@g.harvard.edu}{patryk\_kozlowski@g.harvard.edu}\hfill%
+}
+
+
+\begin{document},
+
+% Title slide
+\frame{\titlepage}
+
+% Slide 1: Introduction
+\begin{frame}{Introduction}
+    \textbf{Objective:} 
+    In this session, we'll explore how electrons in hydrogen atoms transition between energy levels by absorbing light. \\
+    \pause
+    \textbf{Discussion:} 
+    \begin{itemize}
+        \item What do you already know about energy levels in atoms? \pause
+        \item How do atoms absorb and emit light? \pause
+    \end{itemize}
+\end{frame}
+
+% Slide 2: Present the Problem
+\begin{frame}{The Problem: Hydrogen Atom Absorption}
+    \textbf{Problem Statement:} \pause
+    If sunlight were passed through a special diffraction grating, a number of dark lines would appear in the line spectrum, called Fraunhofer lines. These lines result from the absorption of sunlight by hydrogen atoms. One such line corresponds to an absorption at \(4.1 \times 10^3 \, \text{\AA}\). The electron starts at \(n = 2\).\\
+    \pause
+    \textbf{Question:} 
+    What is the final energy level \(n_f\) after absorbing light of this wavelength? \pause
+    
+    \textbf{Interactive Element:} Take 2 minutes to read and start solving the problem on your own. \pause
+\end{frame}
+
+% Slide 3: Identify the Givens and Goal
+\begin{frame}{Identify the Givens and the Goal}
+    \textbf{Givens:} \pause
+    \begin{itemize}
+        \item Wavelength: \( \lambda = 4.1 \times 10^3 \, \text{\AA} \) \pause
+        \item Initial energy level: \(n_i = 2\) \pause
+    \end{itemize}
+    \textbf{Goal:} Find the final energy level \(n_f\). \pause
+    
+    \textbf{Question:} What equation do we need to relate wavelength to energy? \pause
+\end{frame}
+
+% Slide 4: Energy of a Photon
+\begin{frame}{Energy of a Photon}
+    \textbf{Energy of a photon:} \pause
+    \[
+    E_{\text{photon}} = \frac{hc}{\lambda}
+    \] \pause
+    where:
+    \begin{itemize}
+        \item \( h = 6.626 \times 10^{-34} \, \text{J·s} \) (Planck’s constant) \pause
+        \item \( c = 3 \times 10^8 \, \text{m/s} \) (speed of light) \pause
+        \item \( \lambda = 4.1 \times 10^3 \, \text{\AA} = 4.1 \times 10^{-7} \, \text{m} \) (converted to meters) \pause
+    \end{itemize}
+\end{frame}
+
+% Slide 5: Solving for Energy
+\begin{frame}{Solving for Energy}
+    Let's calculate the energy of the photon: \pause
+    \[
+    E_{\text{photon}} = \frac{(6.626 \times 10^{-34} \, \text{J·s})(3 \times 10^8 \, \text{m/s})}{4.1 \times 10^{-7} \, \text{m}} = 4.84 \times 10^{-19} \, \text{J}
+    \]
+    \pause
+    \textbf{Check:} Does everyone get the same result? 
+\end{frame}
+
+% Slide 6: Relating Energy to Energy Levels
+\begin{frame}{Relating Energy to Energy Levels}
+    \textbf{Photon energy and energy levels:} \pause
+    \[
+    E_{\text{photon}} = \Delta E = 2.18 \times 10^{-18} \, \text{J} \left( \frac{1}{n_i^2} - \frac{1}{n_f^2} \right)
+    \] \pause
+    \textbf{Given:} \( n_i = 2 \), \(E_{\text{photon}} = 4.84 \times 10^{-19} \, \text{J} \) \pause
+    \textbf{Question:} What do we solve for now? \pause
+\end{frame}
+
+% Slide 7: Solve for \(n_f\)
+\begin{frame}{Solve for \(n_f\)}
+    \textbf{Solving for \(n_f\):} \pause
+    \[
+    4.84 \times 10^{-19} \, \text{J} = 2.18 \times 10^{-18} \, \text{J} \left( \frac{1}{2^2} - \frac{1}{n_f^2} \right)
+    \] \pause
+    \[
+    n_f = 6.02 \approx 6
+    \]
+    \pause
+    \textbf{Question:} Why must the final value \(n_f\) be rounded to an integer? 
+\end{frame}
+
+% Slide 8: Conclusion
+\begin{frame}{Conclusion}
+    \textbf{Summary:} \pause
+    By absorbing light with wavelength \( 4.1 \times 10^3 \, \text{\AA} \), an electron in a hydrogen atom transitions from \(n = 2\) to \(n = 6\). \pause
+    \textbf{Reflection:} What’s one key takeaway from today’s lesson about quantum absorption?
+\end{frame}
+
+% Slide 9: Questions and Reflection
+\begin{frame}{Questions and Reflection}
+    \textbf{Questions:} \pause
+    Does anyone have any questions about how we solved this problem? \pause
+
+    \textbf{Reflection:} What’s one key takeaway from today’s lesson about quantum absorption?
+\end{frame}
+
+\end{document}

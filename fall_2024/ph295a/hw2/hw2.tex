@@ -1,6 +1,8 @@
 \documentclass[12pt]{article}
 \usepackage{amsmath, amssymb}
 \usepackage{geometry}
+\usepackage{physics}
+
 \geometry{margin=1in}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -220,50 +222,557 @@ Now, we can verify this in the free electron case by setting $v\equiv 0$. In thi
 \begin{equation}
     \cos(ka) = \frac{1}{2} e^{iGa} + \frac{1}{2} e^{-iGa} = \cos(Ga)
 \end{equation}
-\vspace{2em}
-\noindent \textbf{Solution} \\
-\vspace{10em}
+\subsection{}
+Equation (8.70) is more informative when one supplies a little more information about the transmission and reflection coefficients. We write the complex number $t$ in terms of its magnitude and phase:
+$$
+t=|t| e^{\mathrm{it}}
+$$
 
-\section*{Problem 3: Ashcroft \& Mermin, Chapter 8, Problem 2}
-\noindent \textbf{Problem Description:} \\
-Demonstrate that the wavevector \( \mathbf{k} \) in Bloch's theorem is only defined up to a reciprocal lattice vector, i.e., \( \mathbf{k} \sim \mathbf{k} + \mathbf{G} \), where \( \mathbf{G} \) is any reciprocal lattice vector.
+The real number $\delta$ is known as the phase shift, since it specifies the change in phase of the transmitted wave relative to the incident one. Electron conservation requires that the probability of transmission plus the probability of reflection be unity:
+$$
+1=|t|^2+|r|^2
+$$
 
-Relevant equation:
+This, and some other useful information, can be proved as follows. Let $\phi_1$ and $\phi_2$ be any two solutions to the one-barrier Schrodinger equation with the same energy:
+$$
+-\frac{\hbar^2}{2 m} \phi_i^{\prime \prime}+r \phi_i=\frac{\hbar^2 K^2}{2 m} \phi_i, \quad i=1,2
+$$
+
+Define $w\left(\phi_1, \phi_2\right)$ (the "Wronskian") by
+$$
+w\left(\phi_1, \phi_2\right)=\phi_1^{\prime}(x) \phi_2(x)-\phi_1(x) \phi_2^{\prime}(x)
+$$
+(b) Prove that $w$ is independent of $x$ by deducing from (8.73) that its derivative vanishes.
+We want to start by differentiating the Wronskian with respect to $x$:
+\subsubsection{Solution}
 \begin{equation}
-\psi_{\mathbf{k}}(\mathbf{r}) = \psi_{\mathbf{k} + \mathbf{G}}(\mathbf{r})
+    \frac{d}{dx}w(\phi_1, \phi_2) = \frac{d}{dx}\left(\phi_1'\phi_2 - \phi_1\phi_2'\right) = \phi_1''\phi_2 + \phi_1'\phi_2' - \phi_1'\phi_2' - \phi_1\phi_2'' = \phi_1''\phi_2 - \phi_1\phi_2''
 \end{equation}
-This shows the periodicity in reciprocal space.
-
-\vspace{2em}
-\noindent \textbf{Solution:} \\
-\vspace{10em}
-
-\section*{Problem 4: Ashcroft \& Mermin, Chapter 9, Problem 1}
-\noindent \textbf{Problem Description:} \\
-Explain the concept of nearly-free electrons and how the weak periodic potential leads to the formation of energy gaps at the Brillouin zone boundaries.
-
-Relevant equation:
+Now, we rearrange the Schrodinger equation for $\phi_i^{\prime\prime}$
 \begin{equation}
-V(\mathbf{r}) = \sum_{\mathbf{G}} V_{\mathbf{G}} e^{i \mathbf{G} \cdot \mathbf{r}}
+    \phi_i^{\prime\prime} = -\frac{2m}{\hbar^2}\left(\frac{\hbar^2 K^2}{2m} - r\right)\phi_i
 \end{equation}
-where \( V_{\mathbf{G}} \) represents the Fourier components of the potential.
-
-\vspace{2em}
-\noindent \textbf{Solution:} \\
-\vspace{10em}
-
-\section*{Problem 5: Ashcroft \& Mermin, Chapter 9, Problem 3}
-\noindent \textbf{Problem Description:} \\
-Using perturbation theory, show how energy gaps at the zone boundaries arise when a weak periodic potential is applied to a free electron system.
-
-Relevant equation:
+Now we substitute in the forms for $\phi_1^{\prime\prime}$ and $\phi_2^{\prime\prime}$ into the derivative of the Wronskian:
 \begin{equation}
-\Delta E = 2 | V_{\mathbf{G}} |
+    \phi_1''\phi_2 - \phi_1\phi_2'' = -\frac{2m}{\hbar^2}\left(\frac{\hbar^2 K^2}{2m} - r\right)\phi_1\phi_2 + \frac{2m}{\hbar^2}\left(\frac{\hbar^2 K^2}{2m} - r\right)\phi_1\phi_2 = 0
 \end{equation}
-where \( V_{\mathbf{G}} \) is the Fourier component of the periodic potential that causes the energy gap.
+So we have shown that the derivative of the Wronskian vanishes, which implies that the Wronskian is independent of $x$.
+\subsection{}
+(c) Prove (8.72) by evaluating $w\left(\psi_l, \psi_l^*\right)$ for $x \leqslant-a / 2$ and $x \geqslant a / 2$, noting that because $v(x)$ is real $\psi_l^*$ will be a solution to the same Schrödinger equation as $\psi_l$.
+\subsubsection{Solution}
+With the wave incoming from the left, recall that when $x \leq -\frac{a}{2}$, the wave function is given by:
+\begin{equation}
+    \psi_l(x) = e^{iKx} + |r|e^{i\delta}e^{-iKx}
+\end{equation}
+with derivative $\psi_l'(x) = iK\left(e^{iKx} - |r|e^{i\delta}e^{-iKx}\right)$. The complex conjugate of of the wave function is:
+\begin{equation}
+    \psi_l^*(x) = e^{-iKx} + |r|e^{-i\delta}e^{iKx}
+\end{equation}
+with derivative $\psi_l^*(x) = -iK\left(e^{-iKx} - |r|e^{-i\delta}e^{iKx}\right)$. Now, we can evaluate the Wronskian for $x \leq -\frac{a}{2}$:
+\begin{align}
+    w(\psi_l, \psi_l^*) &= \psi_l'\psi_l^* - \psi_l\psi_l^{*'} = iK\left(e^{iKx} - |r|e^{i\delta}e^{-iKx}\right)\left(e^{-iKx} + |r|e^{-i\delta} e^{iKx}\right)\\
+    &- \left(e^{iKx} + |r|e^{i\delta}e^{-iKx}\right)\left(-iK\left(e^{-iKx} - |r|e^{-i\delta}e^{iKx}\right)\right)\\
+    &= iK\left(1 + |r|e^{-i\delta}e^{2iKx} - |r|e^{i\delta}e^{-2iKx} - |r|^2\right)\\
+    &+ iK\left(1 - |r|e^{-i\delta}e^{2iKx} + |r|e^{i\delta}e^{-2iKx} - |r|^2\right)\\
+    &= 2iK\left(1 - |r|^2\right)
+\end{align}
+With the wave coming from the left, recall that when $x \geq \frac{a}{2}$, the wave function is given by:
+\begin{equation}
+    \psi_l(x) = |t|e^{i\left(\delta + Kx\right)}
+\end{equation}
+with derivative $\psi_l'(x) = iK|t|e^{i\left(\delta + Kx\right)}$. The complex conjugate of of the wave function is:
+\begin{equation}
+    \psi_l^*(x) = |t|e^{-i\left(\delta + Kx\right)}
+\end{equation}
+with derivative $\psi_l^*(x) = -iK|t|e^{-i\left(\delta + Kx\right)}$. Now, we can evaluate the Wronskian for $x \geq \frac{a}{2}$:
+\begin{align}
+    w(\psi_l, \psi_l^*) &= \psi_l'\psi_l^* - \psi_l\psi_l^{*'} = iK|t|e^{i\left(\delta + Kx\right)}|t|e^{-i\left(\delta + Kx\right)} - |t|e^{i\left(\delta + Kx\right)}\left(-iK|t|e^{-i\left(\delta + Kx\right)}\right)\\
+    &= 2iK|t|^2
+\end{align}
+Setting that two results equal to each other, we find:
+\begin{equation}
+    2iK\left( - |r|^2\right) = 2iK|t|^2 \implies 1 = |t|^2 + |r|^2
+\end{equation}
+\subsection{}
+(d) By evaluating $w\left(\psi_l, \psi_r^*\right)$ prove that $r t^*$ is pure imaginary, so $r$ must have the form
+$$
+r= \pm i|r| e^{i \delta}
+$$
+where $\delta$ is the same as in ( 8.71 )
+\subsubsection{Solution}
+We start by just considering the left boundary of $x = -\frac{a}{2}$, where the left-moving wave function is given by:
+\begin{equation}
+    \psi_l(x) = e^{iKx} + re^{-iKx}
+\end{equation}
+with derivative $\psi_l'(x) = iK\left(e^{iKx} - re^{-iKx}\right)$. The complex conjugate of the right-moving wave function at the left boundary is:
+\begin{equation}
+    \psi_r^*(x) = t^*e^{-iKx}
+\end{equation}
+with derivative $\psi_r^{*'}(x) = -iKt^*e^{-iKx}$. Now, we can evaluate the Wronskian for $x \leq -\frac{a}{2}$:
+\begin{align}
+    w(\psi_l, \psi_r^*) &= \psi_l'\psi_r^* - \psi_l\psi_r^{*'} = iK\left(e^{iKx} - re^{-iKx}\right)t^*e^{-iKx} - \left(e^{iKx} + re^{-iKx}\right)\left(-iKt^*e^{-iKx}\right)\\
+    &= iK\left(e^{iKx} - re^{-iKx}\right)t^*e^{-iKx} + iK\left(e^{iKx} + re^{-iKx}\right)t^*e^{-iKx}\\
+    &= iK\left(2t^*\right)
+\end{align}
+Next, we consider the right boundary of $x = \frac{a}{2}$, where the left-moving wave function is given by:
+\begin{equation}
+    \psi_l(x) = te^{iKx}
+\end{equation}
+with derivative $\psi_l'(x) = iKte^{iKx}$. The complex conjugate of the right-moving wave function at the right boundary is:
+\begin{equation}
+    \psi_r^*(x) = e^{-iKx} + r^*e^{iKx}
+\end{equation}
+with derivative $\psi_r^{*'}(x) = -iK\left(e^{-iKx} - r^*e^{iKx}\right)$. Now, we can evaluate the Wronskian for $x \geq \frac{a}{2}$:
+\begin{align}
+    w(\psi_l, \psi_r^*) &= \psi_l'\psi_r^* - \psi_l\psi_r^{*'} = iKte^{iKx}\left(e^{-iKx} + r^*e^{iKx}\right) - te^{iKx}\left(-iK\left(e^{-iKx} - r^*e^{iKx}\right)\right)\\
+    &= iKt + iKr^*t e^{2iKx} + iKt - iKr^*t e^{2iKx}\\
+    &= 2iKt
+\end{align}
+Setting the two results equal to each other, we find:
+\begin{equation}
+    2iKt = iK\left(2t^*\right) \implies t = t^*
+\end{equation}
 
-\vspace{2em}
-\noindent \textbf{Solution:} \\
-\vspace{10em}
+\subsection{}
+(e) Show as a consequence of $(8.70),(8.72)$ and (8.75) that the energy and wave vector of the Bloch electron are related by
+$$
+\frac{\cos (K a+\delta)}{|t|}=\cos k a, \quad \varepsilon=\frac{h^2 K^2}{2 m}
+$$
+
+Since $|t|$ is always less than one, but approaches unity for large $K$ (the barrier becomes increasingly less effective as the incident energy grows). the left side of (8.76) plotted against $K$ has the structure depicted in Figure 8.6. For a given $k$, the allowed values of $K$ (and hence the allowed energies $\left.\varepsilon(k)=\hbar^2 K^2 / 2 m\right)$ are given by the intersection of the curve in Figure 8.6 with the hori zontal line of height $\cos (\mathrm{ka})$. Note that values of $K$ in the neighborhood of those satisfying
+$$
+K a+\delta=n \pi
+$$
+give $|\cos (K a+\delta)| t \mid,>1$, and are therefore not allowed for any $k$. The corresponding region of energy are the energy gaps. If $\delta$ is a bounded function of $K$ (as is generally the case), the there will be infinitely many regions of forbidden energy, and also infinitely many regions o allowed energies for each value of $k$.
+\subsubsection{Solution}
+We started with the recently derived definition of the transmission and reflection coefficients:
+\begin{align}
+    t &= |t|e^{i\delta} \\
+    r &= \pm i|r|e^{i\delta}
+\end{align}
+And then squirting these:
+\begin{align}
+    t^2 &= |t|^2e^{2i\delta} \\
+    r^2 &= -|r|^2e^{2i\delta}
+\end{align}
+We can now plug these into the expression for the cosine of the wave vector:
+\begin{align}
+    \cos(ka) &= \frac{t^2 - r^2}{2t}e^{iGa} + \frac{1}{2t}e^{-iGa} \\
+    &= \frac{|t|^2e^{2i\delta} + |r|^2e^{2i\delta}}{2|t|e^{i\delta}}e^{iGa} + \frac{1}{2|t|e^{i\delta}}e^{-iGa} \\
+\end{align}
+Now use the identity that the sum of the square magnitudes is unity in the first term and then combining all the exponentials
+\begin{equation}
+    \cos(ka) = \frac{e^{2i\delta}}{2|t|e^{i\delta}}e^{iGa} + \frac{1}{2|t|e^{i\delta}}e^{-iGa} = \frac{e^{i\left(\delta + Ga\right)} + e^{-i\left(\delta + Ga\right)}}{2|t|}
+\end{equation}
+Now, we make use of the exponential sum identity $e^{i\theta} + e^{-i\theta} = 2\cos(\theta)$ to simplify the expression:
+\begin{equation}
+    \cos(ka) = \frac{2\cos(\delta + Ga)}{2|t|} = \frac{\cos(\delta + Ga)}{|t|}
+\end{equation}
+\subsection{}
+(f) Suppose the barrier is very weak (so that $|t| \approx 1,|r| \approx 0, \delta \approx 0$ ). Show that the energ. gaps are then very narrow, the width of the gap containing $K=n \pi / a$ being
+$$
+\varepsilon_{\mathrm{qap}} \approx 2 \pi n \frac{\hbar^2}{m a^2}|r|
+$$
+\subsubsection{Solution}
+We are interested in finding the width of the anergy gap $\Delta \varepsilon$ near a given value of $K = n\pi/a$. Since we are interested in small deviations from $K$, we want to consider $K = n\pi/a + \Delta K$. Then, we have:
+\begin{equation}
+    Ka + \delta = n\pi + \Delta K a + \delta = n\pi + \Delta \theta
+\end{equation}
+but since we know that the $\delta$ term is small, we can define a $\Delta \theta$ where $n\pi +\Delta \theta = n\pi + \Delta K a $ and then we have $\cos(Ka + \delta) = \cos(n\pi + \Delta \theta) = (-1)^n\cos(\Delta \theta)$. Now, since we know that the transmission coefficient will be nearly 1, we are really interested in its inverse that appears in the equation, so if we define $t = 1 - \epsilon$, then we have $\frac{1}{t} = \frac{1}{1 - \epsilon} = 1 + \epsilon + \ldots$. Plugging in everything we just found gives:
+\begin{equation}
+    \cos(ka) = \frac{\cos(Ka + \delta)}{|t|} = \frac{(-1)^n\cos(\Delta \theta)}{1 - \epsilon} \approx (-1)^n\cos(\Delta \theta)(1 + \epsilon)
+\end{equation}
+Now we know that the magnitude of the cosine function is close to 1 near the energy gap, implying:
+\begin{equation}
+    |\cos(\Delta \theta)(1 + \epsilon)| \approx 1 \implies |\cos(\Delta \theta)| \approx \frac{1}{1 + \epsilon} \approx 1 - \epsilon \implies \cos(\Delta \theta) \approx \pm(1 - \epsilon)
+\end{equation}
+Now, we know that the tailor expansion of the chosun function for a small argument is $\cos(\Delta \theta) \approx 1 - \frac{1}{2}\Delta \theta^2$, so we equate the to to find:
+\begin{equation}
+    1 - \epsilon \approx 1 - \frac{1}{2}\Delta \theta^2 \implies \epsilon \approx \frac{1}{2}\Delta \theta^2 \implies \Delta \theta \approx \sqrt{2\epsilon}
+\end{equation}
+Now, we know that we originally defined the $\Delta \theta$ as $\Delta \theta = n\pi + \frac{\pi}{a}\Delta K$, so we can solve for $\Delta K$:
+\begin{equation}
+    \Delta K = \frac{a}{\pi}\left(\sqrt{2\epsilon} - n\pi\right) = \frac{a}{\pi}\sqrt{2\epsilon} - n
+\end{equation}
+And the energy Is defined as $\Delta \varepsilon = \varepsilon\left( K + \Delta K\right) - \varepsilon(K) = \frac{h^2}{2m}\left(K + \Delta K\right)^2 - \frac{h^2}{2m}K^2 \approx  \frac{h^2}{m}K\Delta K$, where we have neglected the second order term $\Delta K^2$. Since we know the relationship $\Delta K = \Delta \theta/a = \sqrt{2\epsilon}/a$, which we plug in along with $K = n\pi/a$ to find:
+\begin{equation}
+    \Delta \varepsilon = \frac{\hbar^2n\pi}{m a^2}\sqrt{2\epsilon} = 2\pi n \frac{\hbar^2}{m a^2}|r|
+\end{equation}
+were in the final expression we make use of the fact that we defined initially for $\epsilon$ as measuring the difference from full transmission, so we have $\epsilon = \frac{1}{2} |r|^2$.
+\subsection{}
+(g) Suppose the barrier is very strong, so that $|t| \approx 0,|r| \approx 1$. Show that a lowed bands of energies are then very narrow, with widths
+$$
+\varepsilon_{\max }-\varepsilon_{\min }=O(|t|)
+$$
+\subsubsection{Solution}
+Again, we start with the relation
+\begin{equation}
+    \cos(ka) = \frac{\cos(Ka + \delta)}{|t|}
+\end{equation}
+but we know that the left hand side always is grounded by one, even though we have that the denominator on the right hand side is going to 0, which implies that the numerator too must banish: $\cos(Ka + \delta) \approx 0$. Now, we know that the cosine function is zero at integer multiples of $\frac{\pi}{2}$, so we have $Ka + \delta = \left(n + \frac{1}{2}\right)\pi$, which implies that $\delta = \left(n+\frac{1}{2} \right)\pi - Ka$. Now, we rearrange to have $K_n = \frac{\left(n + \frac{1}{2}\right)\pi - \delta}{a}$. Now, this was always an approximation, so in reality there is a small deviation away from 0 or $K=K_n+\Delta K$, so we have:
+\begin{equation}
+    K= \frac{\left(n + \frac{1}{2}\right)\pi - \delta}{a} + \Delta K \implies Ka + \delta = \left(n + \frac{1}{2}\right)\pi + a\Delta K
+\end{equation}
+We can use the trigonometric identity of $\cos(\theta + \frac{\pi}{2}) = -\sin(\theta)$ to find:
+\begin{equation}
+    \cos(Ka + \delta) = \cos\left(\left(n + \frac{1}{2}\right)\pi + a\Delta K\right) = -\sin(a\Delta K)
+\end{equation}
+Now, our original relation is
+\begin{equation}
+    \cos(ka) = \frac{\cos(Ka + \delta)}{|t|} = \frac{-\sin(a\Delta K)}{|t|}
+\end{equation}
+and recall that the Corson function on the left has to be bounded by 1, so we must have
+\begin{equation}
+    |\frac{-\sin(a\Delta K)}{|t|}| \leq 1 \implies |\sin(a\Delta K)| \leq |t|
+\end{equation}
+We know that in this situation the transmission coefficient is supposed to be small, so we can utilize the tailor expansion of the sign function at small in goes to get:
+\begin{equation}
+    |\sin(a\Delta K)| \approx |a\Delta K| \leq |t| \implies \Delta K \leq \frac{|t|}{a}
+\end{equation}
+This means that the with between allowed K values is $K_{\text{width}} = \frac{2|t|}{a}$, and the energy width is then:
+\begin{equation}
+    \Delta \varepsilon = \frac{h^2}{2m}\left(K + \frac{2|t|}{a}\right)^2 - \frac{h^2}{2m}K^2 = \frac{h^2}{m}K\frac{2|t|}{a} + \frac{h^2}{2m}\left(\frac{2|t|}{a}\right)^2 = O(|t|)
+\end{equation}
+\subsection{}
+
+(h) As a concrete example, one often considers the case in which $v(x)=g \delta(x)$, where $\delta(x)$ is the Dirac delta function (a special case of the "Kronig-Penney model"). Show that in this case
+$$
+\cot \delta=-\frac{h^2 K}{m g}, \quad|t|=\cos \delta
+$$
+
+This model is a common textbook example of a one-dimensional periodic potential. Note, however, that most of the structure we have established is, to a considerable degree, independent of the particular functional dependence of $|t|$ and $\delta$ on $K$.
+
+\subsubsection{Solution}
+We start with the Schrödinger equation
+\begin{equation}
+    \frac{-\hbar^2}{2m} \psi''(x) + g\delta(x)\psi(x) = \varepsilon\psi(x)
+\end{equation}
+but we know that the delta function vanishes at all positions other than 0, so we simplify to
+\begin{equation}
+    \frac{-\hbar^2}{2m} \psi''(x) = \varepsilon\psi(x)
+\end{equation}
+and now we want to use the fact that a right-moving plane wave has to have the same value as it approaches 0 from the left side and the same value as it leaves 0 from the right-hand side. We know the definitions for a right-moving plane wave
+\begin{align}
+    \psi_L(x) &= e^{iKx} + re^{-iKx} \\
+    \psi_R(x) &= te^{iKx}
+\end{align}
+and then by applying the continuity of the wavefunction at 0, we get $1+r=t$. Next, we apply the fundamental theorem of calculus, which gives a relationship between the derivative from both sides of the origin and the area under the curve under the delta function
+\begin{equation}
+    \psi_R'(0^+) - \psi_L'(0^-) = \frac{2m}{\hbar^2}g\psi(0)
+\end{equation}
+So we want to compute the appropriate derivatives
+\begin{align}
+    \psi_L'(x) &= iK\left(e^{iKx} - re^{-iKx}\right) \implies \psi_L'(0^-) = iK(1 - r) \\
+    \psi_R'(x) &= iKt e^{iKx} \implies \psi_R'(0^+) = iKt
+\end{align}
+and then we can plug in the values to find
+\begin{equation}
+    iKt - iK(1 - r) = \frac{2m}{\hbar^2}g(1 + r) \implies r = \frac{\frac{mg}{\hbar^{2}}}{iK - \frac{mg}{\hbar^2}} \implies t = \frac{iK}{iK - \frac{mg}{\hbar^2}}
+\end{equation}
+Now, we can define the constant $\lambda = \frac{mg}{\hbar^2}$ and then we can simplify the expression for $t$ to
+\begin{equation}
+    t = \frac{iK}{iK - \lambda} = \frac{K^2 - iK\lambda}{K^2 + \lambda^2}
+\end{equation}
+
+\section{Problem 3: Ashcroft \& Mermin, Chapter 8, Problem 2}
+\subsection{}
+(a) In the free electron case the density of levels at the Fermi energy can be written in the form (Eq. (2.64)) $g\left(\varepsilon_F\right)=m k_F / \hbar^2 \pi^2$. Show that the general form (8.63) reduces to this when $\varepsilon_n(\mathbf{k})=\hbar^2 k^2 / 2 m$.
+\subsubsection{Solution}
+We start with the general form of the density of states
+\begin{equation}
+g_n(\mathcal{E})=\int_{S_n^{(k)}} \frac{d S}{4 \pi^3} \frac{1}{\left|\nabla \varepsilon_n(\mathrm{k})\right|}
+\end{equation}
+Our first task is to avoid with the gradient of the single particle energy for the free electron
+\begin{equation}
+\nabla \varepsilon_n(\mathbf{k}) = \frac{\partial \varepsilon_n(\mathbf{k})}{\partial k} = \frac{\partial \left(\frac{\hbar^2 k^2}{2m}\right)}{\partial k} = \frac{\hbar^2 k}{m}
+\end{equation}
+Then we want to asa doit the integral expression,  where we know that the kernel of the enteral is independent of the surface parameter S
+\begin{equation}
+\int_{S_n^{(k)}} dS = 4\pi k_F^2
+\end{equation}
+So, putting all of this together we see that
+\begin{equation}
+g_n(\varepsilon_F) = \frac{4\pi k_F^2}{4\pi^3}\frac{m}{\hbar^2 k_F} = \frac{m k_F}{\hbar^2 \pi^2}
+\end{equation}
+\subsection{}
+(b) Consider a band in which, for sufficiently small $k_7 \varepsilon_n(k)=\varepsilon_0+\left(\hbar^2 / 2\right)\left(k_x^2 / m_x+k_y^2 / m_y+\right.$ $k_z^2 / m_x$ ) (as might be the case in a crystal of orthorhombic symmetry) where $m_x, m_y$, and $m_z$ are positive constants. Show that if $\varepsilon$ is close enough to $\varepsilon_0$ that this form is valid, then $g_n(\varepsilon)$ is proportional to $\left(\varepsilon-\varepsilon_0\right)^{1 / 2}$, so its derivative becomes infinite (van Hove singularity) as $\varepsilon$ approaches the band minimum. (Hint: Use the form (8.57) for the density of levels.) Deduce from this that if the quadratic form for $\varepsilon_n(\mathbf{k})$ remains valid up to $\delta_F$, then $g_n\left(\varepsilon_F\right)$ can be written in the obvious generalization of the free electron form (2.65):
+$$
+g_n\left(\varepsilon_F\right)=\frac{3}{2} \frac{n}{\varepsilon_F-\varepsilon_0}
+$$
+where $n$ is the contri' "on of the electrons in the band to the total electronic density.
+\subsubsection{Solution}
+We start by defining and effective shifted energy
+$E= \varepsilon - \varepsilon_0 = \left(\hbar^2 / 2\right)\left(k_x^2 / m_x+k_y^2 / m_y+k_z^2 / m_z\right)$, and then to make the integral simpler, we define $q_x = \frac{k_x}{\sqrt{m_x}}$, $q_y = \frac{k_y}{\sqrt{m_y}}$, and $q_z = \frac{k_z}{\sqrt{m_z}}$. Then we can write the integral as
+$$
+g_n(\varepsilon)=\int \frac{d \dot{\mathbf{k}}}{4 \pi^3} \delta\left(\varepsilon-\varepsilon_n(\mathbf{k})\right)
+$$
+, we know $d \mathbf{k} = dk_x dk_y dk_z = \sqrt{m_x m_y m_z} dq_x dq_y dq_z$, and then we can write the integral as
+\begin{equation}
+g_n(\varepsilon) = \frac{\sqrt{m_x m_y m_z}}{4 \pi^3}\int dq_x dq_y dq_z \delta\left(\varepsilon-\left(\hbar^2 / 2\right)\left(q_x^2 + q_y^2 + q_z^2\right)\right)
+\end{equation}
+Because the delta function will vanish for all values of $q_x, q_y, q_z$ that do not satisfy the energy condition, we define $q = \sqrt{2\varepsilon/\hbar^2}$, and then we can write the integral as
+\begin{equation}
+g_n(\varepsilon) = \frac{\sqrt{m_x m_y m_z}}{4 \pi^3}\int d\mathbf{q} \delta\left(\varepsilon-\left(\hbar^2 / 2\right)q^2\right)
+\end{equation}
+Now we make use of the known property of the delta function, which is that $\int d\mathbf{q} \delta\left(f\right) = \int \frac{dS_q}{|\nabla f|}$, where $dS_q$ is the surface element of the constant energy surface. First, we evaluate the gradient of the function
+\begin{equation}
+\nabla f = \frac{\partial f}{\partial q} = -\frac{\hbar^2}{1}q \implies |\nabla f| = \frac{\hbar^2}{1}q
+\end{equation}
+And then the surface area of a sphere is $4\pi q^2$, so we can write the integral as
+\begin{equation}
+g_n(\varepsilon) = \frac{\sqrt{m_x m_y m_z}}{4 \pi^3}\frac{4\pi q^2}{\hbar^2 q} = \frac{\sqrt{m_x m_y m_z}}{\pi^2 \hbar^2}q = \frac{\sqrt{m_x m_y m_z}}{\pi^2 \hbar^3}\sqrt{2E}
+\end{equation}
+So, we have shown the desired result of the density of states being proportional to $\sqrt{\varepsilon - \varepsilon_0}$. Now, we want to find the derivative of the density of states, which is
+\begin{equation}
+g_n'(\varepsilon) = \frac{\sqrt{m_x m_y m_z}}{2\pi^2 \hbar^3}\frac{1}{\sqrt{2E}} \propto \frac{1}{\sqrt{\varepsilon - \varepsilon_0}}
+\end{equation}
+And thus we observe the van Hove singularity because as the energy gap becomes small, the derivative of the density of states will go to infinity. Now we know that the number of electrons can be found by integrating the density of states up to the forme level:
+\begin{equation}
+n = \int_{\varepsilon_0}^{\varepsilon_F} g_n(\varepsilon) d\varepsilon = \frac{\sqrt{2m_x m_y m_z}}{\pi^2 \hbar^3}\int_{\varepsilon_0}^{\varepsilon_F} \sqrt{\varepsilon - \varepsilon_0} d\varepsilon
+\end{equation}
+We can make a u substitution where $u = \varepsilon - \varepsilon_0$, so $du = d\varepsilon$, and then we can write the integral as
+\begin{equation}
+n = \frac{\sqrt{2m_x m_y m_z}}{\pi^2 \hbar^3}\int_{0}^{\varepsilon_F - \varepsilon_0} \sqrt{u} du = \frac{\sqrt{2m_x m_y m_z}}{\pi^2 \hbar^3}\frac{2}{3}\left(\varepsilon_F - \varepsilon_0\right)^{3/2}
+\end{equation}
+And then rearrange to notice the equality
+\begin{equation}
+\frac{\sqrt{2m_x m_y m_z}}{\pi^2 \hbar^3} = \frac{3n}{2\left(\varepsilon_F - \varepsilon_0\right)^{3/2}}
+\end{equation}
+so we can write the density of states as
+\begin{equation}
+g_n\left(\varepsilon_F\right) = \frac{3n}{2\left(\varepsilon_F - \varepsilon_0\right)}
+\end{equation}
+\subsection{}
+(c) Consider the density of levels in the neighborhood of a saddle point, where $\varepsilon_n(k)=\varepsilon_0+$ $\left(\hbar^2 / 2\right)\left(k_x^2 / m_x+k_y^2 / m_y-k_z^2 / m_z\right)$ where $m_x, m_y$, and $m_z$ are positive constants. Show that when $\varepsilon \approx \varepsilon_0$, the derivative of the density of levels has the form
+$$
+\begin{aligned}
+g_n^{\prime}(\varepsilon) & \approx \text { constant, } & & \varepsilon>\varepsilon_0 \\
+& \approx\left(\varepsilon_0-\varepsilon\right)^{-1 / 2}, & & \varepsilon<\varepsilon_0
+\end{aligned}
+$$
+\subsubsection{Solution}
+We previously found that the density of levels can be expressed as:
+\begin{equation}
+    g_n(\varepsilon) = \frac{\sqrt{m_x m_y m_z}}{4 \pi^3}\int dq_x dq_y dq_z \delta\left(E-\left(\hbar^2 / 2\right)\left(q_x^2 + q_y^2 - q_z^2\right)\right)
+\end{equation}
+where we defined $E = \varepsilon - \varepsilon_0$. We know that the delta function will vanish for all values of $q_x, q_y, q_z$ suggesting $E=\frac{\hbar^{2}}{2} \left(q_x^2 + q_y^2 - q_z^2\right)$. Therefore, if we have $s\equiv \frac{2E}{\hbar^{2}}$, this implies that $q_z = \pm \sqrt{q_x^2 + q_y^2 - s}$. Next, we want to evaluate the interval $q_z$ and by the properties of the data function within the integrand, we know that
+\begin{equation}
+    \int dq_z \delta\left(q_x^2 + q_y^2 - q_z^2 -s \right) = \frac{1}{2|q_z|} \eval_{\pm \sqrt{q_x^2 + q_y^2 - s}}
+\end{equation}
+But we need to multiply by a factor of 2 account for both roots, so we are left with
+\begin{equation}
+    \int dq_z \delta\left(q_x^2 + q_y^2 - q_z^2 -s \right) = \frac{1}{|q_z|} \eval_{\sqrt{q_x^2 + q_y^2 - s}}
+\end{equation}
+But we know that the expression under the square route must not be negative, so we split into 2 cases: $s < 0$ and $s > 0$. For the case of $s > 0$, we have $q_x^2 + q_y^2 \geq s$ but since we were told that the energy gab is very small, this is only very slight difference i.e. $q_x^2 + q_y^2 -s \approx q_x^2 + q_y^2$ Therefore, we can approximate the integral as
+\begin{equation}
+    g_n(\varepsilon) = \frac{\sqrt{m_x m_y m_z}}{4 \pi^3}\int_{q_x^2 + q_y^2 -s} dq_x dq_y \frac{1}{\sqrt{q_x^2 + q_y^2 - s}}
+\end{equation}
+Now, we can make a substitution $q_x = r\cos(\theta)$ and $q_y = r\sin(\theta)$, so we have $dq_x dq_y = r dr d\theta$, and $q_x^2 + q_y^2 = r^2$, so the integral becomes
+\begin{equation}
+    g_n(\varepsilon) = \frac{\sqrt{m_x m_y m_z}}{4 \pi^3}\int_{0}^{2\pi} d\theta \int_{\sqrt{s}}^{\sqrt{s} + \delta} \frac{r dr}{\sqrt{r^2 - s}} = \frac{\sqrt{m_x m_y m_z}}{2 \pi^2}\int_{\sqrt{s}}^{\sqrt{s} + \delta} \frac{rdr}{\sqrt{r^2 - s}}
+\end{equation}
+where $\delta$ is a small deviation from $\sqrt{s}$. Furthermore, since the deviation is so small, we know that the inside of the square rout can be approximated as $r^2 - s \approx r^2$, so the integral becomes
+\begin{equation}
+    g_n(\varepsilon) = \frac{\sqrt{m_x m_y m_z}}{2 \pi^2}\int_{\sqrt{s}}^{\sqrt{s} + \delta} \frac{rdr}{r} = \frac{\sqrt{m_x m_y m_z}}{2 \pi^2}\int_{\sqrt{s}}^{\sqrt{s} + \delta} dr
+\end{equation}
+in order to find the density of states, we will need to evaluate this inter go but then right after we will take the derivative to determine $g_n'(\varepsilon)$, which implies that $g_n'(\varepsilon)$ is a constant. For the case of $s < 0$, the integral over $q_z$ will be
+\begin{equation}
+    \int dq_z \delta\left(q_x^2 + q_y^2 - q_z^2 -s \right) = \frac{1}{\sqrt{q_x^2 + q_y^2 + s}}
+\end{equation}
+and then the density of states will be
+\begin{equation}
+    g_n(\varepsilon) = \frac{\sqrt{m_x m_y m_z}}{4 \pi^3}\int_{q_x^2 + q_y^2 -s} dq_x dq_y \frac{1}{\sqrt{q_x^2 + q_y^2 + s}}
+\end{equation}
+\section{Problem 4: Ashcroft \& Mermin, Chapter 9, Problem 1}
+1. Nearly Free Electron Fermi Surface Near a Single Bragg Plane
+
+To investigate the nearly free electron band structure given by (9.26) near a Bragg plane, it is convenient to measure the wave vector $\mathbf{q}$ with respect ot the point $\frac{1}{2} K$ on the Bragg plane. If we write $\mathbf{q}=\frac{1}{2} \mathrm{~K}+\mathbf{k}$, and resolve $\mathbf{k}$ into its components parallel ( $k_{\|}$) and perpendicular ( $k_1$ ) to $\mathbf{K}$, then $(9.26)$ becomes
+$$
+\varepsilon=\varepsilon_{\mathrm{K} / 2}^0+\frac{\hbar^2}{2 m} k^2 \pm\left(4 \varepsilon_{\mathrm{K} / 2}^0 \frac{\hbar^2}{2 m} k_i^2+\left|U_{\mathrm{K}}\right|^2\right)^{1 / 2}
+$$
+
+It is also convenient to measure the Fermi energy $\varepsilon_F$ with respect to the lowest value assumed by either of the bands given by ( 9.36 ) in the Bragg plane, writing:
+$$
+\varepsilon_F=\varepsilon_{K / 2}^0-\left|U_K\right|+\Delta
+$$
+so that when $\Delta<0$, no Fermi surface intersects the Bragg plane.
+\subsection{}
+(a) Show that when $0<\Delta<2\left|U_k\right|$, the Fermi surface lies entirely in the lower band and intersects the Bragg plane in a circle of radius
+$$
+\rho=\sqrt{\frac{2 m \Delta}{\hbar^2}}
+$$
+\subsubsection{Solution}
+We know that the lower band will have an energy of
+\begin{equation}
+    \varepsilon = \varepsilon_{K/2}^0 + \frac{\hbar^2}{2m}k^2 - \left(4\varepsilon_{K/2}^0\frac{\hbar^2}{2m}k_i^2 + |U_K|^2\right)^{1/2}
+\end{equation}
+Equating the definition for the forme energy to this expression
+\begin{equation}
+    \varepsilon_{K/2}^0 - |U_K| + \Delta = \varepsilon_{K/2}^0 + \frac{\hbar^2}{2m}k^2 - \left(4\varepsilon_{K/2}^0\frac{\hbar^2}{2m}k_i^2 + |U_K|^2\right)^{1/2}
+\end{equation}
+Canceling out the common energy factor and then rearranging gives
+\begin{equation}
+    \frac{\hbar^2}{2m}k^2 + |U_K|- \Delta = \left(4\varepsilon_{K/2}^0\frac{\hbar^2}{2m}k_i^2 + |U_K|^2\right)^{1/2}
+\end{equation}
+Then, we square both sides to get
+\begin{equation}
+    \left(\frac{\hbar^2}{2m}k^2 + |U_K|- \Delta\right)^2 = 4\varepsilon_{K/2}^0\frac{\hbar^2}{2m}k_i^2 + |U_K|^2
+\end{equation}
+Now we know that as the Bragg plane, $k_i = 0$, so we can simplify the equation to
+\begin{equation}
+    \left(\frac{\hbar^2}{2m}k^2 + |U_K|- \Delta\right)^2 = |U_K|^2
+\end{equation}
+Expanding the left side while defining $S= |U_K| - \Delta$ gives
+\begin{equation}
+    \left(\frac{\hbar^2}{2m}\right)^2 k^4 + 2\left(\frac{\hbar^2}{2m}\right)k^2S + \left(S^2 - |U_K|^2\right) = 0
+\end{equation}
+This is a quadratic equation in $k^2$, so first we redefine $E_k \equiv \frac{\hbar^2}{2m}k^2$ and then we recognize a further simplification of
+\begin{equation}
+    S^2 - |U_K|^2 = \Delta^2 - 2\Delta|U_K| + |U_K|^2 - |U_K|^2 = \Delta^2 - 2\Delta|U_K|
+\end{equation}
+So in full form, our quadratic equation is
+\begin{equation}
+    E_k^2 + 2\left( |U_K| - \Delta\right)E_k + \Delta^2 - 2\Delta|U_K| = 0
+\end{equation}
+Now we use the quadratic formula to solve
+\begin{align}
+    E_k &= \frac{-2\left( |U_K| - \Delta\right) \pm \sqrt{4\left( |U_K| - \Delta\right)^2 - 4\Delta^2 + 8\Delta|U_K|}}{2} \\
+    &= -\left( |U_K| - \Delta\right) \pm \sqrt{|U_K|^2 - 2\Delta|U_K| + \Delta^2 - \Delta^2 + 2\Delta|U_K|} \\
+    &= -\left( |U_K| - \Delta\right) \pm \sqrt{|U_K|^2} \\
+\end{align}
+We need to choose the physical solution, so we get
+\begin{equation}
+    E_k = -\left( |U_K| - \Delta\right) + |U_K| = \Delta \implies \frac{\hbar^2}{2m}k^2 = \Delta \implies k = \sqrt{\frac{2m\Delta}{\hbar^2}}
+\end{equation}
+At the Bragg plane we have $k_{||} = k$, so the radius of the circle where the Fermi surface intersects the Bragg plane is $\rho = k = \sqrt{\frac{2m\Delta}{\hbar^2}}$.
+
+
+\subsection{}
+(b) Show that if $\Delta>\left|2 U_{\mathrm{K}}\right|$, the Fermi surface lies in both bands, cutting the Bragg plane in two circles of radii $\rho_1$ and $\rho_2$ (Figure 9.6), and that the difference in the areas of the two circles is
+$$
+\pi\left(\rho_2^2-\rho_1^2\right)=\frac{4 m \pi}{\hbar^2}\left|U_{\mathrm{k}}\right|
+$$
+(The area of these circles can be measured directly in some metals through the de Haas-van Alphen effect (Chapter 14), and therefore $\left|\boldsymbol{U}_{\mathrm{K}}\right|$ can be determined directly from experiment for such nearly free electron metals.)
+\subsubsection{Solution}
+Again, we can write out 9.26 as
+\begin{equation}
+    \varepsilon = \varepsilon_{K/2}^0 + \frac{\hbar^2}{2m}k^2 \pm \left(4\varepsilon_{K/2}^0\frac{\hbar^2}{2m}k_i^2 + |U_K|^2\right)^{1/2}
+\end{equation}
+and since this is at the Bragg plane, $k_i = 0$, so we can simplify to
+\begin{equation}
+    \varepsilon = \varepsilon_{K/2}^0 + \frac{\hbar^2}{2m}k_{||}^2 \pm |U_K|
+\end{equation}
+Now, we set this eco to the expression for the Fermi energy
+\begin{equation}
+    \varepsilon_{K/2}^0 - |U_K| + \Delta = \varepsilon_{K/2}^0 + \frac{\hbar^2}{2m}k_{||}^2 \pm |U_K| \implies \Delta  - |U_K| = \frac{\hbar^2}{2m}k_{||}^2 \pm |U_K|
+\end{equation}
+First, we will treat the case of the lower band, which has the minus sign, so we have
+\begin{equation}
+    \Delta - |U_K| = \frac{\hbar^2}{2m}k_{||}^2 - |U_K| \implies \frac{\hbar^2}{2m}k_{||}^2 = \Delta \implies k_{||} = \sqrt{\frac{2m\Delta}{\hbar^2}}
+\end{equation}
+Next, we do the same for the upper band, which has the plus sign, so we have
+\begin{equation}
+    \Delta - |U_K| = \frac{\hbar^2}{2m}k_{||}^2 - |U_K| \implies \frac{\hbar^2}{2m}k_{||}^2 = \Delta - 2|U_K| \implies k_{||} = \sqrt{\frac{2m(\Delta - 2|U_K|)}{\hbar^2}}
+\end{equation}
+So, the radii of the two circles are $\rho_1 = \sqrt{\frac{2m\Delta}{\hbar^2}}$ and $\rho_2 = \sqrt{\frac{2m(\Delta - 2|U_K|)}{\hbar^2}}$, and the difference in the areas of the two circles is then
+\begin{equation}
+    \pi(\rho_2^2 - \rho_1^2) = \pi\left(\frac{2m(\Delta - 2|U_K|)}{\hbar^2} - \frac{2m\Delta}{\hbar^2}\right) = \pi\left(\frac{4m|U_K|}{\hbar^2}\right)
+\end{equation}
+
+
+
+\section{Problem 5: Ashcroft \& Mermin, Chapter 9, Problem 3}
+3. Effect of Weak Periodic Potential at Places in $k$-Space Where Bragg Planes Meet Consider the point $W\left(k_w=(2 \pi / a)\left(1, \frac{1}{2}, 0\right)\right)$ in the Brillouin zone of the fce structure shown (see Figure 9.14). Here three Bragg planes ( $(200),(111),(11 \overline{1}))$ meet, and accordingly the free electron energies
+$$
+\begin{aligned}
+& \varepsilon_1^0=\frac{\hbar^2}{2 m} k^2 \\
+& \varepsilon_2^0=\frac{\hbar^2}{2 m}\left(\mathbf{k}-\frac{2 \pi}{a}(1,1,1)\right)^2 \\
+& \varepsilon_3^0=\frac{\hbar^2}{2 m}\left(\mathbf{k}-\frac{2 \pi}{a}(1,1, \overline{1})\right)^2 \\
+& \varepsilon_4^0=\frac{\hbar^2}{2 m}\left(\mathbf{k}-\frac{2 \pi}{a}(2,0,0)\right)^2
+\end{aligned}
+$$
+are degenerate when $\mathbf{k}=k_w$, and equal to $\varepsilon_w=h^2 \mathbf{k}_w{ }^2 / 2 m$.
+Figure 9.14
+First Brillouin zone for a face-centered cubic crystal.
+\subsection{}
+(a) Show that in a region of $k$-space near W, the first-order energies are given by solutions to ${ }^{15}$
+$$
+\left|\begin{array}{llll}
+\varepsilon_1^0-\varepsilon & U_1 & U_1 & U_2 \\
+U_1 & \varepsilon_2^0-\varepsilon & U_2 & U_1 \\
+U_1 & U_2 & \varepsilon_3^0-\varepsilon & U_1 \\
+U_2 & U_1 & U_1 & \varepsilon_4^0-\varepsilon
+\end{array}\right|=0
+$$
+where $U_2=U_{200}, U_1=U_{111}=U_{11 \overline{1}}$, and that at W the roots are
+$$
+\varepsilon=\varepsilon_{\mathrm{W}}-U_2 \text{ (twice), } \quad \varepsilon=\varepsilon_{\mathrm{W}}+U_2 \pm 2 U_1
+$$
+\subsubsection{Solution}
+As shown in lecture, the Hamiltonian for this weak potential has the matrix of elements
+\begin{align}
+    \varepsilon_i^0 - \varepsilon & \text{ if } i = j \\
+    U_{\mathbf{G}_i - \mathbf{G}_j} & \text{ if } i \neq j
+\end{align}
+Since we have 4 energy levels, the matrix becomes
+\begin{equation}
+    \begin{bmatrix}
+        \varepsilon_1^0 - \varepsilon & U_1 & U_1 & U_2 \\
+        U_1 & \varepsilon_2^0 - \varepsilon & U_2 & U_1 \\
+        U_1 & U_2 & \varepsilon_3^0 - \varepsilon & U_1 \\
+        U_2 & U_1 & U_1 & \varepsilon_4^0 - \varepsilon
+    \end{bmatrix}
+\end{equation}
+At the point $W$, we have that all $\varepsilon_i^0 = \varepsilon_W$, so we want to evaluate this determinant
+\begin{equation}
+\det(H) = 0 \implies \begin{vmatrix}
+        x & U_1 & U_1 & U_2 \\
+        U_1 & x & U_2 & U_1 \\
+        U_1 & U_2 & x & U_1 \\
+        U_2 & U_1 & U_1 & x
+    \end{vmatrix} = 0
+\end{equation}
+where $x = \varepsilon_W - \varepsilon$. Using symbolic algebra to compute the roots, we get
+\begin{equation}
+    \left(- U_{2} + x\right)^{2} \left(- 2 U_{1} + U_{2} + x\right) \left(2 U_{1} + U_{2} + x\right) = 0
+\end{equation}
+which gives the desired roots of $\varepsilon = \varepsilon_W - U_2$ twice and $\varepsilon = \varepsilon_W + U_2 \pm 2U_1$.
+\subsection{}
+(b) Using a similar method, show that the energies at the point $U\left(\mathrm{k}_{\mathrm{U}}=(2 \pi / a)\left(1, \frac{1}{4}, \frac{1}{4}\right)\right)$ are
+$$
+\varepsilon=\varepsilon_{\mathrm{U}}-U_2, \quad \varepsilon=\varepsilon_{\mathrm{U}}+\frac{1}{2} U_2 \pm \frac{1}{2}\left(U_2^2+8 U_1^2\right)^{1 / 2}
+$$
+where $\varepsilon_{\mathrm{U}}=\hbar^2 \mathbf{k}_{\mathrm{U}}{ }^2 / 2 m$.
+\subsubsection{Solution}
+First we want to find the deceived energies at the point $U$. This can be determined by considering where
+\begin{equation}
+    |k_U|^2 = |k_U - G|^2 \implies 2\mathbf{k}_U \cdot \mathbf{G} - \mathbf{G}^2 = 0
+\end{equation}
+If we set $\mathbf{G} = \frac{2\pi}{a}(h,k,l)$ and plug in the values for $\mathbf{k}_U=(2\pi/a)(1,1/4,1/4)$, we get
+\begin{equation}
+    2\left(h + \frac{k}{4} + \frac{l}{4}\right) = \left(h^2 + k^2 + l^2\right)
+\end{equation}
+This becomes true only for the pairing (1,1,1) and (2,0,0), so the possible reciprocal lattes vectors are $\mathbf{G}_1 = \frac{2\pi}{a}(1,1,1)$ and $\mathbf{G}_2 = \frac{2\pi}{a}(2,0,0)$. This implies that we want to consider to degenerate states for $\mathbf{k}_U, \mathbf{k}_U - \mathbf{G}_1$ and $\mathbf{k}_U - \mathbf{G}_2$. We can write the Hamiltonian matrix as
+\begin{equation}
+H=
+    \begin{bmatrix}
+        \varepsilon_1^0 - \varepsilon & U_1 & U_2 \\
+        U_1 & \varepsilon_2^0 - \varepsilon & U_1 \\
+        U_2 & U_1 & \varepsilon_3^0 - \varepsilon \\
+    \end{bmatrix}
+\end{equation}
+Then we have the same deal as before were all of the $\varepsilon_i^0 = \varepsilon_U$, so we can write the determinant as
+\begin{equation}
+\det(H) = 0 \implies \begin{vmatrix}
+        x & U_1 & U_2 \\
+        U_1 & x & U_1 \\
+        U_2 & U_1 & x
+    \end{vmatrix} = 0
+\end{equation}
+where $x = \varepsilon_U - \varepsilon$. Using symbolic algebra to compute the roots, we get
+\begin{equation}
+    \left(- U_{2} + x\right) \left(- 2 U_{1}^{2} + U_{2} x + x^{2}\right) = 0
+\end{equation}
+which gives the desired roots of $\varepsilon = \varepsilon_U - U_2$ and then solving the quadratic equation in the second parenthesis gives $\varepsilon = \varepsilon_U + \frac{1}{2}U_2 \pm \frac{1}{2}\left(U_2^2 + 8U_1^2\right)^{1/2}$.
 
 \end{document}
