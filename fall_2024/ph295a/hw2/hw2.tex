@@ -130,7 +130,15 @@ So we have:
     &= \frac{2\pi(K^2 +2)^{1/2}}{a (K+2)(K-1)^2} \left(\hat{x}(1-K) - \hat{y}(K-1) + \hat{z}(K^2 - 1)\right) \\
     &= \frac{2\pi(K^2 +2)^{1/2}}{a (K+2)(K-1)} \left(-\hat{x} - \hat{y} + \hat{z}(K+1)\right)
 \end{align}
-So we see that the reciprocal lattice is also trigonal; $(K+1)$ is permuted among entries.
+So we see that the reciprocal lattice is also trigonal; $(K+1)$ is permuted among entries. The length of each vector is given by:
+\begin{equation}
+    |\mathbf{b}_1| = |\mathbf{b}_2| = |\mathbf{b}_3| = \sqrt{\frac{4\pi^2(K^2 + 2)}{a^2(K+2)^2(K-1)^2} \left( 2 + (K+1)^2 \right)}
+\end{equation}
+Now, we know that the angle between the reciprocal lattice vectors is given by:
+\begin{equation}
+    \cos(\theta^*) = \frac{\mathbf{b}_1 \cdot \mathbf{b}_2}{|\mathbf{b}_1||\mathbf{b}_2|} = \frac{2K+1}{K^2 + 2}
+\end{equation}
+Was not able to complete.
 \section{Problem 2: Ashcroft \& Mermin, Chapter 8, Problem 1}
 \noindent \textbf{Problem Description:} \\
 The band structure of the one-dimensional solid can be expressed quite simply in terms of the properties of an electron in the presence of a single-barrier potential $t(x)$. Consider therefore an electron incident from the left on the potential barrier $v(x)$ with energy ${ }^{33} \varepsilon=h^2 K^2 / 2 m$. Since $x(x)=0$ when $|x| \geqslant a / 2$. in these regions the wave function $\psi_1(x)$ will have the form
