@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section{Problem 1}
+\begin{equation}
+    2^0
+\end{equation}
+\section{Problem 2}
+We know that the infinity norm is given by the maximum row sum of a vector; so the point will still be connected by a dotted line to span(A), but now it will form a 90 degrees angle with the current line.
+\section{Problem 3}
+This is because classically Gaussian elimination was done without pivoting, and the matrix should be well conditioned for that to be numerically stable. However, in the newer context with the pivoting, we are able to bypass the problem of ill-conditioned matrix.
+\section{Problem 4}
+The rank is $r=2$ because it takes a single horizontal sweep and then a vertical one to reduce this pattern. The rank cannot be less than 2, or we would not see this 2D structure, and it cannot be greater than 2 because we can see that the matrix is rank deficient.
+\section{Problem 5}
+Let us start by considering the minimal example of a $4 \times 4$ matrix. We can write the matrix as
+\begin{equation}
+    A = \begin{pmatrix}
+        a & b & c & d \\
+        e & f & g & h \\
+        i & j & k & l \\
+        m & n & o & p
+    \end{pmatrix}
+\end{equation}
+It would take $3!$ swaps in order to get the matrix into the upper triangular form. Now we can consider an $8\times 4$ matrix. We can write the matrix as
+\begin{equation}
+    A = \begin{pmatrix}
+        a & b & c & d \\
+        e & f & g & h \\
+        i & j & k & l \\
+        m & n & o & p \\
+        q & r & s & t \\
+        u & v & w & x \\
+        y & z & A & B \\
+        C & D & E & F
+    \end{pmatrix}
+\end{equation}
+It would take $3!\times 4\times 4 \implies 3!\times n^2$ swaps to get the matrix into the upper triangular form. So if we take the ratio of this over the last we find the ratio of operations for factoring should be $B:A = n^2:1$.
+\section{Problem 6}
+If we know that
+\begin{equation}
+    ||AB|| = ||A|| ||B||
+\end{equation}
+and then we do an SVD decomposition of $A$ and $B$ as
+\begin{equation}
+    A = U_A \Sigma_A V_A^T
+\end{equation}
+and
+\begin{equation}
+    B = U_B \Sigma_B V_B^T
+\end{equation}
+Then we can write the product of $A$ and $B$ as
+\begin{equation}
+    AB = U_A \Sigma_A V_A^T U_B \Sigma_B V_B^T
+\end{equation}
+and then we can write the norm of $AB$ as
+\begin{equation}
+    ||AB|| = ||U_A \Sigma_A V_A^T U_B \Sigma_B V_B^T||
+\end{equation}
+but we know that this has to be the same as
+\begin{equation}
+    ||A|| ||B|| = ||U_A \Sigma_A V_A^T|| ||U_B \Sigma_B V_B^T||
+\end{equation}
+which can only be true if the singular factors of $A$ and $B$ are both orthogonal matrices.
+
+\end{document}

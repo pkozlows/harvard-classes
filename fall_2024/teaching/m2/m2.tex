@@ -1,0 +1,47 @@
+\documentclass{beamer}
+% reduce font size
+
+
+\title{Spectrometry Lab: Determining Thermodynamic Properties}
+\author{Patryk Kozlowski \\ \href{mailto:patryk_kozlowski@g.harvard.edu}{patryk\_kozlowski@g.harvard.edu}}
+\date{Lab 4 - General Chemistry}
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+% Single Slide Content
+\begin{frame}{Lab 4: Spectrophotometry and Thermodynamics}
+    \tiny
+    \textbf{Objective:} Use spectrophotometry to measure equilibrium concentrations at different temperatures and determine thermodynamic properties like $\Delta G^\circ$, $\Delta H^\circ$, and $\Delta S^\circ$. \\
+    
+    \pause
+    \textbf{Reaction:} Complexation of Aluminum Ions with Xylenol Orange:
+    \[
+    \text{H}_4\text{Q} + \text{Al}^{3+} \rightleftharpoons \text{AlQ}^{-} + 4\text{H}^{+}
+    \]
+    \begin{itemize}
+        \item Yellow reactant ($\text{H}_4\text{Q}$) forms red product ($\text{AlQ}^{-}$). \pause
+        \item Measure absorbance at 550 nm (product absorbs more strongly at this wavelength). \pause
+        \item The reaction is endothermic (heat is required to drive the reaction forward). \pause
+    \end{itemize}
+    
+    \textbf{Key Calculations:} \pause
+    \begin{itemize}
+        \item Beer’s Law: \(A = \epsilon_1[\text{H}_4\text{Q}]L + \epsilon_2[\text{AlQ}^{-}]L\) \pause
+        \item Find equilibrium constant \(K\) at each temperature. \pause
+        \item Calculate $\Delta G^\circ$ from $K$: \(\Delta G^\circ = -RT \ln K\) \pause
+        \item Use $\Delta G^\circ = \Delta H^\circ - T \Delta S^\circ$ to determine $\Delta H^\circ$ and $\Delta S^\circ$ from a plot of $\Delta G^\circ$ vs. $T$. \pause
+    \end{itemize}
+
+    \textbf{Experiment Steps:}
+    \begin{itemize}
+        \item Measure initial absorbance $A_i$ at 550 nm. \pause
+        \item Heat the sample and record absorbance at different temperatures (90°C to 50°C). \pause
+        \item Use absorbance data to find $[ \text{AlQ}^{-} ]$ and calculate $K$ at each temperature. \pause
+    \end{itemize}
+
+\end{frame}
+
+\end{document}
